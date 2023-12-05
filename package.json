@@ -1,0 +1,17 @@
+{
+  "name": "404-found",
+  "version": "1.0.0",
+  "description": "LaunchCode LiftOff D&amp;D Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2"
+  }
+}
