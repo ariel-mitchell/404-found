@@ -9,28 +9,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Spells extends AbstractEntity{
+public class ClassInfo extends AbstractEntity{
 
-    @NotBlank
-    public String spell;
+    @NotBlank(message = "Select a class!")
+    public String classInfo;
 
-    @ManyToMany(mappedBy = "spell_id")
+    @ManyToMany(mappedBy = "class_id")
     @NotNull
     private List<Character> characters = new ArrayList<>();
 
-    public Spells(){}
+    public ClassInfo(){}
 
-    public Spells(String spell) {
+    public ClassInfo(String classInfo) {
         super();
-        this.spell = spell;
+        this.classInfo = classInfo;
     }
 
-    public String getSpell() {
-        return spell;
+    public String getClassInfo() {
+        return classInfo;
     }
 
-    public void setSpell(String spell1) {
-        this.spell = spell;
+    public void setClassInfo(String classInfo) {
+        this.classInfo = classInfo;
     }
 
     public List<Character> getCharacters() {

@@ -9,28 +9,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Spells extends AbstractEntity{
+public class Alignment extends AbstractEntity{
 
-    @NotBlank
-    public String spell;
+    @NotBlank(message = "Enter character alignment!")
+    public String alignment;
 
-    @ManyToMany(mappedBy = "spell_id")
+    @ManyToMany(mappedBy = "alignment_id")
     @NotNull
     private List<Character> characters = new ArrayList<>();
 
-    public Spells(){}
 
-    public Spells(String spell) {
+    public Alignment() {}
+
+    public Alignment (String alignment) {
         super();
-        this.spell = spell;
+        this.alignment = alignment;
     }
 
-    public String getSpell() {
-        return spell;
+    public String getAlignment() {
+        return alignment;
     }
 
-    public void setSpell(String spell1) {
-        this.spell = spell;
+    public void setAlignment(String alignment) {
+        this.alignment = alignment;
     }
 
     public List<Character> getCharacters() {
