@@ -10,6 +10,11 @@ function App() {
     (async () => await load())();
   }, []);
 
+  async function load() {
+    const result = await api.get("/all");
+    //set 
+  }
+
   return( 
     //api data pulled in html format
     <div></div>
