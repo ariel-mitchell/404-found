@@ -14,11 +14,7 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping
-    public List<Post> getAllPosts() {
-        return postService.getAllPosts();
-    }
-
+    // Endpoint to create a new post via HTTP POST request
     @PostMapping("/create")
     public Post createPost(@RequestBody Post post) {
         return postService.createPost(post);
