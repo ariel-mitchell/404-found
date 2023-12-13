@@ -4,6 +4,7 @@ import models.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 import repository.PostRepository;
 import java.util.List;
 
@@ -19,7 +20,9 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    //Method to create a new post
+
+    // Endpoint to create a new post via HTTP POST request
+    @PostMapping("/create")
     public Post createPost(Post post) {
         //takes the post object as an argument, save data to repo
         return postRepository.save(post);
