@@ -2,19 +2,24 @@ package service;
 
 import models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import repository.UserRepository;
 
 //UserService interacts with UserRepo for user related functions
 @Service
 public class UserService {
-    @Autowired
     private UserRepository userRepository;
-    public User createUser (User user) {
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    public User save(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
-    public User getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
-    }
-    //Other methods for user related functions?
 }
