@@ -4,9 +4,8 @@ import models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.PostService;
-import java.util.List;
+import java.util.List
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
@@ -24,4 +23,3 @@ public class PostController {
     public Post createPost(@RequestBody Post post) {
         return postService.createPost(post);
     }
-}
