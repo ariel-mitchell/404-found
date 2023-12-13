@@ -24,9 +24,9 @@ public class PostService {
     }
     //Retrieve a post by ID
     public Post getPostById(Long id) {
-        //Post doesn't exsist
-        return postRepository.findById(id).orElseThrow(() -> new PostNotFound("Post not found with id: " + id)
-    };
+        //Post doesn't exist
+        return postRepository.findById(id).orElse(null);
+    }
 
     @PostMapping("/create")
     public Post createPost(Post post) {
