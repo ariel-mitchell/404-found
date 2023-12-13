@@ -18,12 +18,16 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    //Method to retrieve all posts
+    //Retrieve all posts
     public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
+    //Retrieve a post by ID
+    public Post getPostById(Long id) {
+        //Post doesn't exsist
+        return postRepository.findById(id).orElseThrow(() -> new PostNotFound("Post not found with id: " + id)
+    };
 
-    // Endpoint to create a new post via HTTP POST request
     @PostMapping("/create")
     public Post createPost(Post post) {
         //takes the post object as an argument, save data to repo
