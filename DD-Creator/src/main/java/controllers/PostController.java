@@ -19,7 +19,7 @@ public class PostController {
         return postService.getAllPosts();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public Post createPost(@RequestBody Post post) {
         return postService.createPost(post);
     }
