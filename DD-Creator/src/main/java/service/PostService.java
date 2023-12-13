@@ -27,11 +27,16 @@ public class PostService {
         //Post doesn't exist
         return postRepository.findById(id).orElse(null);
     }
-
-    @PostMapping("/create")
+    //Create a new post
     public Post createPost(Post post) {
-        //takes the post object as an argument, save data to repo
+        //Save new post and return it
         return postRepository.save(post);
     }
-    //Method to delete post (admin only)
+    //Delete post by ID
+    public void deletePost(Long id) {
+        //Delete the post if it exists - void return type
+        if (postRepository.existsById(id)) {
+            postRepository.deleteById(id);
+        }
+    }
 }
