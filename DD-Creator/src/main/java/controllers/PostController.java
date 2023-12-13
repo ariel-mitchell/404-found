@@ -30,12 +30,10 @@ public class PostController {
         Post post = postService.getPostById(id);
         return ResponseEntity.ok(post);
     }
-
-
-    // Endpoint to create a new post via HTTP POST request
-    @PostMapping("/posts/create")
-    public ResponseEntity<String> createPost(@RequestBody Post post) {
-        //create a post
-        return ResponseEntity.ok("Post Created!");
+    //Create New Post
+    @PostMapping("/create")
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
+        Post createdPost = postService.createPost(post);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
 }
