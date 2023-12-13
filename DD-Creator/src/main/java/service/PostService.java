@@ -11,15 +11,17 @@ import java.util.List;
 //Service for managing operations related to Post entity
 @Service
 public class PostService {
+    private final PostRepository postRepository;
 
     @Autowired
-    private PostRepository postRepository;
+    private PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     //Method to retrieve all posts
     public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
-
 
     // Endpoint to create a new post via HTTP POST request
     @PostMapping("/create")
