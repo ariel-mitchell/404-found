@@ -19,7 +19,7 @@ public class Character extends AbstractEntity {
     private Race race;
 
     @ManyToMany
-    @NotNull(message = "Select all equiptment")
+    @NotNull(message = "Select all equipment")
     private List<Equipment> equipment;
 
     @ManyToMany

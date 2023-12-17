@@ -13,7 +13,7 @@ public class CharacterData {
      * @return List all Characters with matching criteria.
      */
 
-    public static ArrayList<Character> findByCharacteristicandValue(String characteristic, String value, Iterable<Character> allCharacters) {
+    public static ArrayList<Character> findByCharacteristicAndValue(String characteristic, String value, Iterable<Character> allCharacters) {
 
         ArrayList<Character> results = new ArrayList<>();
 

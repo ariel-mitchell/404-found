@@ -15,6 +15,7 @@ public class Spells extends AbstractEntity{
     public String spell;
 
     @ManyToMany(mappedBy = "spell_id")
+    //???? functionality without an input?
     @NotNull
     private List<Character> characters = new ArrayList<>();
 
