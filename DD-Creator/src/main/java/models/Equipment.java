@@ -15,6 +15,8 @@ public class Equipment {
     @GeneratedValue
     private int id;
 
+    //functionality without some of the pieces??
+
     @NotBlank(message = "Select Equipment!")
     private String weapons;
     private String magicWeapons;
