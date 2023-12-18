@@ -29,9 +29,9 @@ public class PostService {
 
     // Get post by ID
     public Post getPostById(Long id) {
-        return (Post) postRepository.findAllById(id).orElse(null);
+        return postRepository.findById(id).orElse(null);
     }
-
+    //Update Post 
 
     // Create a new post
     public Post createPost(Post post) {

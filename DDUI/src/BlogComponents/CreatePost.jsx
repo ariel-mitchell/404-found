@@ -5,7 +5,7 @@ function CreatePost () {
     const [post, setPost] = useState({ title: '', content: '', author: '',});
 
     const handleSubmit = async (e) => {
-        e.preventDeault();
+        e.preventDefault();
         try {
             const response = await axios.post('http://localhost:5173/posts/create', post);
             console.log('Post created:', response.data);
@@ -15,7 +15,7 @@ function CreatePost () {
     };
 
     const handleChange = (e) => {
-        setPost({ post, [e.target.name]: e.target.value });
+        setPost({ ...post, [e.target.name]: e.target.value });
     };
 return (
     <div>

@@ -17,7 +17,13 @@ public class Post {
     private String content;
     private String author;
     private Date dateCreated;
-
+    private String keyword;
+    public String getKeyword() {
+        return keyword;
+    }
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
     public Long getId() {
         return id;
     }
