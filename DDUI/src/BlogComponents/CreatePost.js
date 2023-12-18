@@ -7,7 +7,7 @@ function CreatePost () {
     const handleSubmit = async (e) => {
         e.preventDeault();
         try {
-            const response = await axios.post('http://localhost:8080/posts/create', post);
+            const response = await axios.post('http://localhost:5173/posts/create', post);
             console.log('Post created:', response.data);
         } catch (error) {
             console.error('Error creating post:', error);
