@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function PostLlist() {
-    const [posts, setPosts] = useState([]);
+function PostList() {
+const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
-        axios.get('http://localhost:8080/posts')
-        .then(response => setPosts(response.data))
-        .catch(console.error('Error retrieving posts:', error));
-    }, []);
+useEffect(() => {
+    axios.get('http://localhost:8080/posts')
+    .then(response => setPosts(response.data))
+    .catch(error => console.error('Error fetching posts:', error));
+}, []);
 
-    return (
-        <div>
-            <h2>404-Found</h2>
-            <ul>
-                {posts.map(post => (
-                    <li key={post.id}>
-                        {post.title} - {post.author}
-                    </li>
-                ))}
-            </ul>
-        </div>
+return (
+    <div>
+        <h2>Posts</h2>
+        <ul>
+            {posts.map(post => (
+            <li key={post.id}>
+                {post.title} - {post.author}
+            </li>
+        ))}
+        </ul>
+    </div>
     );
 }
 
-export default PostLlist;
+export default PostList;
