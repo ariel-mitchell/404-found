@@ -20,7 +20,7 @@ public class Character extends AbstractEntity {
 
     @ManyToMany
     @NotNull(message = "Select all equipment")
-    private List<Equipment> equipment;
+    private List<Loadout> loadouts;
 
     @ManyToMany
     @NotNull(message = "Select two proficiencies!")
@@ -28,20 +28,19 @@ public class Character extends AbstractEntity {
     private List<Proficiencies> proficiencies;
 
     @ManyToMany
-    @NotNull(message = "Select two spells!")
-    @Size(min = 2, max = 2)
+    @Size(max = 2)
     private List<Spells> spells;
 
     public Character() {
     }
 
-    public Character(Alignment anAlignment, Background aBackground, ClassInfo aClass, Race aRace, List<Equipment> someEquipment, List<Proficiencies> someProficiencies, List<Spells> someSpells) {
+    public Character(Alignment anAlignment, Background aBackground, ClassInfo aClass, Race aRace, List<Loadout> someLoadout, List<Proficiencies> someProficiencies, List<Spells> someSpells) {
         super();
         this.alignment = anAlignment;
         this.background = aBackground;
         this.classInfo = aClass;
         this.race = aRace;
-        this.equipment = someEquipment;
+        this.loadouts = someLoadout;
         this.proficiencies = someProficiencies;
         this.spells = someSpells;
     }
@@ -81,12 +80,12 @@ public class Character extends AbstractEntity {
         this.race = race;
     }
 
-    public List<Equipment> getEquipment() {
-        return equipment;
+    public List<Loadout> getEquipment() {
+        return loadouts;
     }
 
-    public void setEquipment(List<Equipment> equipment) {
-        this.equipment = equipment;
+    public void setEquipment(List<Loadout> loadouts) {
+        this.loadouts = loadouts;
     }
 
     public List<Proficiencies> getProficiencies() {

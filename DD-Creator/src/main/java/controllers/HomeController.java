@@ -30,7 +30,7 @@ public class HomeController {
     private ClassRepository classRepository;
 
     @Autowired
-    private EquipmentRepository equipmentRepository;
+    private LoadoutRepository loadoutRepository;
 
     @Autowired
     private ProficiencyRepository proficiencyRepository;
@@ -63,8 +63,8 @@ public class HomeController {
         List<ClassInfo> classInfo = (List<ClassInfo>) classRepository.findAll();
         model.addAttribute("class info", classInfo);
 
-        List<Equipment> equipment = (List<Equipment>) equipmentRepository.findAll();
-        model.addAttribute("equipment", equipment);
+        List<Loadout> loadouts = (List<Loadout>) loadoutRepository.findAll();
+        model.addAttribute("loadout", loadouts);
 
         List<Proficiencies> proficiencies = (List<Proficiencies>) proficiencyRepository.findAll();
         model.addAttribute("proficiencies", proficiencies);
@@ -109,8 +109,8 @@ public class HomeController {
             newCharacter.setBackground(background);
         }
 
-        List<Equipment> equipmentObjs = (List<Equipment>) equipmentRepository.findAllById(equipment);
-        newCharacter.setEquipment(equipmentObjs);
+        List<Loadout> loadoutObjs = (List<Loadout>) loadoutRepository.findAllById(equipment);
+        newCharacter.setEquipment(loadoutObjs);
 
         List<Proficiencies> proficienciesObjs = (List<Proficiencies>) proficiencyRepository.findAllById(proficiencies);
         newCharacter.setProficiencies(proficienciesObjs);

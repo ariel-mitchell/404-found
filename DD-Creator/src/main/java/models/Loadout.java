@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Equipment {
+public class Loadout {
 
     @Id
     @GeneratedValue
@@ -30,9 +30,9 @@ public class Equipment {
     @NotNull
     private List<Character> characters = new ArrayList<>();
 
-    public Equipment(){}
+    public Loadout(){}
 
-    public Equipment(String weapons, String magicWeapons, String armor, String magicArmor, String equipment, String treasure) {
+    public Loadout(String weapons, String magicWeapons, String armor, String magicArmor, String equipment, String treasure) {
         this();
         this.weapons = weapons;
         this.magicWeapons = magicWeapons;
@@ -60,8 +60,8 @@ public class Equipment {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Equipment equipment1)) return false;
-        return id == equipment1.id && Objects.equals(weapons, equipment1.weapons) && Objects.equals(magicWeapons, equipment1.magicWeapons) && Objects.equals(armor, equipment1.armor) && Objects.equals(magicArmor, equipment1.magicArmor) && Objects.equals(equipment, equipment1.equipment) && Objects.equals(treasure, equipment1.treasure) && Objects.equals(characters, equipment1.characters);
+        if (!(o instanceof Loadout loadout1)) return false;
+        return id == loadout1.id && Objects.equals(weapons, loadout1.weapons) && Objects.equals(magicWeapons, loadout1.magicWeapons) && Objects.equals(armor, loadout1.armor) && Objects.equals(magicArmor, loadout1.magicArmor) && Objects.equals(equipment, loadout1.equipment) && Objects.equals(treasure, loadout1.treasure) && Objects.equals(characters, loadout1.characters);
     }
 
     @Override

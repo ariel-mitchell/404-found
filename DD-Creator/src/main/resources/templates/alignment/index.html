@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<p th:unless="${alignments} and ${alignments.size()}">No characters found!</p>
+
+<div>
+    <h2>Alignments</h2>
+    <ul>
+        <li th:each="alignment : ${alignments}">
+            <a th:href="@{'/alignments/view/' + ${alignment.id}}" th:text="${alignment.name}"></a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>
