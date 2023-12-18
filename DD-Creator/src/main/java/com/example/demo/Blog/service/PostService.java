@@ -44,6 +44,8 @@ public class PostService {
         // TODO: Implement logic to delete post by ID
         if (postRepository.existsById(id)) {
             postRepository.deleteById(id);
+        } else {
+            throw new PostNotFoundException("Post not found with id: " + id);
         }
     }
 }
