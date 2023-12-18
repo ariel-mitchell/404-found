@@ -10,7 +10,7 @@ return (
     <CreatePost />
     <PostList />
     </div>
-);
+    );
 }
 
 export default App;
