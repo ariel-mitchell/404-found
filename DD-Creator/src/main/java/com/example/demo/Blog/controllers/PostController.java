@@ -1,11 +1,11 @@
-package controllers;
+package com.example.demo.Blog.controllers;
 
-import models.Post;
+import com.example.demo.Blog.models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.PostService;
+import com.example.demo.Blog.service.PostService;
 import java.util.List;
 
 
@@ -18,27 +18,48 @@ public class PostController {
     public PostController(PostService postService) {
         this.postService = postService;
     }
-    //Get All Post
+
+    // Returns list of posts
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts(){
         List<Post> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
     }
-    //Get Post by {id}
+    // Get posts by keyword
+    /* param keyword - keyword to search for in post content.
+    returns List of posts matching the keyword.
+    */
+    @GetMapping("/search")
+    public ResponseEntity<List<Post>> getPostsByKeyword(@RequestParam String keyword) {
+        // convert the keyword to lowercase
+        String lowercaseKeyword = keyword.toLowerCase();
+        List<Post> posts = postService.getPostsByKeyword(lowercaseKeyword);
+        return ResponseEntity.ok(posts);
+    }
+    //Get post by ID
+    /* param id - ID of the post
+    returns post with specified ID
+    */
     @GetMapping("/{id}")
     public ResponseEntity<Post> getPostById(@PathVariable Long id) {
         Post post = postService.getPostById(id);
         return ResponseEntity.ok(post);
     }
     //Create new Post
+    /* param post - post to be created
+    returns created post
+    */
     @PostMapping("/create")
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
         Post createdPost = postService.createPost(post);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
-    //Update post {}
+    //Update post?
 
     //Delete Post
+    /* param id - ID of the post to be deleted
+    returns no content
+    */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postService.deletePost(id);

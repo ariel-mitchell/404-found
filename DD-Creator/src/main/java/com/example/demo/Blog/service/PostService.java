@@ -1,11 +1,10 @@
-package service;
+package com.example.demo.Blog.service;
 
-import models.Post;
+import com.example.demo.Blog.models.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import repository.PostRepository;
+import com.example.demo.Blog.repository.PostRepository;
 import java.util.List;
 
 //Service for managing operations related to Post entity
@@ -18,11 +17,15 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    //Retrieve all posts
+    // Get all posts
     public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
-    //Retrieve a post by ID
+    // Get by keyword
+    public List<Post> getPostsByKeyword(String lowercaseKeyword) {
+        return null;
+    }
+    //Get a post by ID
     public Post getPostById(Long id) {
         //Post doesn't exist
         return postRepository.findById(id).orElse(null);
