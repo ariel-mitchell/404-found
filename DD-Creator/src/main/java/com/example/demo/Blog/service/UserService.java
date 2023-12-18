@@ -1,9 +1,9 @@
-package service;
+package com.example.demo.Blog.service;
 
-import models.User;
+import com.example.demo.Blog.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import com.example.demo.Blog.repository.UserRepository;
 
 //UserService interacts with UserRepo for user related functions
 @Service
