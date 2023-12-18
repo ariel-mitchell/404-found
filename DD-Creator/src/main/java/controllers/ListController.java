@@ -17,28 +17,28 @@ import java.util.List;
 public class ListController {
 
     @Autowired
-    CharacterRepository characterRepository;
+    private CharacterRepository characterRepository;
 
     @Autowired
-    AlignmentRepository alignmentRepository;
+    private AlignmentRepository alignmentRepository;
 
     @Autowired
-    BackgroundRepository backgroundRepository;
+    private BackgroundRepository backgroundRepository;
 
     @Autowired
-    ClassRepository classRepository;
+    private ClassRepository classRepository;
 
     @Autowired
-    EquipmentRepository equipmentRepository;
+    private EquipmentRepository equipmentRepository;
 
     @Autowired
-    ProficiencyRepository proficiencyRepository;
+    private ProficiencyRepository proficiencyRepository;
 
     @Autowired
-    RaceRepository raceRepository;
+    private RaceRepository raceRepository;
 
     @Autowired
-    SpellRepository spellRepository;
+    private SpellRepository spellRepository;
 
 
 
