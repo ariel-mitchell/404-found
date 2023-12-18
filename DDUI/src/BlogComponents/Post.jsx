@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// Define a Post component that takes a post object as a prop
+// post object as a prop
 function Post({ post }) {
     // Initialize state variables for likes, comments, and the new comment input
     const [likes, setLikes] = useState(post.likes);
     const [comments, setComments] = useState(post.comments);
     const [newComment, setNewComment] = useState('');
 
-    // Define a function to handle liking a post
+    // handle liking a post
     const handleLike = async () => {
         setLikes(likes + 1);
         // TODO: Make request to backend to update the post likes
     };
 
-    // Define a function to handle changes to the new comment input
+    // handle changes to the new comment input
     const handleCommentChange = (event) => {
         setNewComment(event.target.value);
     };
 
-    // Define a function to handle submitting a new comment
+    // submitting a new comment
     const handleCommentSubmit = async (event) => {
         event.preventDefault();
 
