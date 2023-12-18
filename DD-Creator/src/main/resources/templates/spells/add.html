@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
+<body>
+<h1>Add Spells</h1>
+
+<nav th:replace="~{fragments :: page-header}"></nav>
+
+<form>
+    <div>
+        <label th:for="name">Spell Name</label>
+        <input th:field="${spell.name}" />
+        <span th:errors="${spell.name}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="Spells">Spells</label>
+        <input th:field="${spells.spell}" />
+        <span th:errors="${spells.spell}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Spell" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
+<body>
+
+<nav th:replace="~{fragments :: page-header}"></nav>
+
+<h1>Add Character</h1>
+
+<form>
+    <div>
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="${character.name}" />
+        <span th:errors="${character.name}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="alignment">Alignment</label>
+        <select name="alignmentId">
+            <option th:each="alignment : ${alignments}"
+                    th:text="${alignment.name}"
+                    th:value="${alignment.id}"></option>
+        </select>
+        <a th:href="@{'/alignment/add'}">Add Alignment</a>
+    </div>
+
+    <div>
+        <label th:for="backgrounds">Backgrounds</label>
+        <th:block th:each="background : ${backgrounds}">
+            <input type="checkbox" name="backgrounds" th:value="${background.id}">
+            <label th:text="${background.name}"></label>
+        </th:block>
+        <a th:href="@{'/backgrounds/add'}">Add Background</a>
+    </div>
+
+    <div>
+        <label th:for="classes">Class</label>
+        <select name="classId">
+            <option th:each="class : ${classes}"
+                    th:text="${class.name}"
+                    th:value="${class.id}"></option>
+        </select>
+        <a th:href="@{'/classes/add'}">Add Class</a>
+    </div>
+
+    <div>
+        <label th:for="loadouts">Load-outs</label>
+        <th:block th:each="loadout : ${loadouts}">
+            <input type="checkbox" name="loadouts" th:value="${loadouts.id}">
+            <label th:text="${background.name}"></label>
+        </th:block>
+        <a th:href="@{'/backgrounds/add'}">Add Background</a>
+    </div>
+
+    <input type="submit" value="Add Job" />
+</form>
+
+</body>
+</html>

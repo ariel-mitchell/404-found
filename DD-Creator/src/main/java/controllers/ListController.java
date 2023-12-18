@@ -29,7 +29,7 @@ public class ListController {
     private ClassRepository classRepository;
 
     @Autowired
-    private EquipmentRepository equipmentRepository;
+    private LoadoutRepository loadoutRepository;
 
     @Autowired
     private ProficiencyRepository proficiencyRepository;
@@ -50,7 +50,7 @@ public class ListController {
         characteristicChoices.put("alignment", "Alignment");
         characteristicChoices.put("background", "Background");
         characteristicChoices.put("class", "Class");
-        characteristicChoices.put("equipment", "Equipment");
+        characteristicChoices.put("loadout", "Loadout");
         characteristicChoices.put("proficiencies", "proficiencies");
         characteristicChoices.put("race", "Race");
         characteristicChoices.put("spells", "Spells");
@@ -67,8 +67,8 @@ public class ListController {
         List<ClassInfo> classInfo = (List<ClassInfo>) classRepository.findAll();
         model.addAttribute("class info", classInfo);
 
-        List<Equipment> equipment = (List<Equipment>) equipmentRepository.findAll();
-        model.addAttribute("equipment", equipment);
+        List<Loadout> loadouts = (List<Loadout>) loadoutRepository.findAll();
+        model.addAttribute("loadout", loadouts);
 
         List<Proficiencies> proficiencies = (List<Proficiencies>) proficiencyRepository.findAll();
         model.addAttribute("proficiencies", proficiencies);
