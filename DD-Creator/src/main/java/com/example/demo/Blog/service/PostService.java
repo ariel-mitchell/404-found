@@ -49,6 +49,7 @@ public class PostService {
         }
     }
 
-    //Like and Unlike Post
+    public Post updatePost(Long id, Post updatedPost) {
+    }
 }
 

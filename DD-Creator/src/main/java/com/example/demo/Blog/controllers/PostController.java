@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.Blog.service.PostService;
-import java.util.List;
 
+import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
@@ -21,10 +21,11 @@ public class PostController {
 
     // Returns list of posts
     @GetMapping
-    public ResponseEntity<List<Post>> getAllPosts(){
+    public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
     }
+
     // Get posts by keyword
     /* param keyword - keyword to search for in post content.
     returns List of posts matching the keyword.
@@ -36,7 +37,8 @@ public class PostController {
         List<Post> posts = postService.getPostsByKeyword(lowercaseKeyword);
         return ResponseEntity.ok(posts);
     }
-    //Get post by ID
+
+    // Get post by ID
     /* param id - ID of the post
     returns post with specified ID
     */
@@ -45,7 +47,8 @@ public class PostController {
         Post post = postService.getPostById(id);
         return ResponseEntity.ok(post);
     }
-    //Create new Post
+
+    // Create new Post
     /* param post - post to be created
     returns created post
     */
@@ -54,16 +57,26 @@ public class PostController {
         Post createdPost = postService.createPost(post);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
-    //Update post?
 
-    //Delete Post
+    // Update a post
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post updatedPost) {
+        Post updated = postService.updatePost(id, updatedPost);
+
+        if (updated != null) {
+            return ResponseEntity.ok(updated);
+        } else {
+            return ResponseEntity.notFound().build(); // Handle appropriately if the post with the given ID doesn't exist
+        }
+    }
+
+    // Delete Post
     /* param id - ID of the post to be deleted
     returns no content
     */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postService.deletePost(id);
         return ResponseEntity.noContent().build();
     }
-    //Like and Unlike Post
 }
