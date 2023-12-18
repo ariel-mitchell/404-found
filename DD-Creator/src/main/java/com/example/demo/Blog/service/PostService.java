@@ -35,6 +35,7 @@ public class PostService {
         return null;
     }
 
+
     // Create a new post
     public Post createPost(Post post) {
         // Save new post and return it
@@ -44,8 +45,10 @@ public class PostService {
     // Delete post by ID
     public void deletePost(Long id) {
         // TODO: Implement logic to delete post by ID
-        if (postRepository.existsById(AbstractPersistable_.id)) {
-            postRepository.deleteById(AbstractPersistable_.id);
+        if (postRepository.existsById(id)) {
+            postRepository.deleteById(id);
+        }
     }
 }
+
 
