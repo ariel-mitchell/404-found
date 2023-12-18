@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import PostList from '/PostList';
-import CreatePost from '/CreatePost';
+import PostList from './BlogComponents/PostLists';
+import CreatePost from './BlogComponents/CreatePost';
 
 function App() {
 return (
