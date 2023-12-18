@@ -3,6 +3,7 @@ package com.example.demo.Blog.service;
 import com.example.demo.Blog.models.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.AbstractPersistable_;
 import org.springframework.stereotype.Service;
 import com.example.demo.Blog.repository.PostRepository;
 import java.util.List;
@@ -22,34 +23,29 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    // Get posts by keyword
-    public List<Post> getPostsByKeyword(String lowercaseKeyword) {
+    // Get by keyword
+    public List<Post> getPostsByKeyword() {
         // TODO: Implement logic to search for posts by keyword
         return null;
     }
 
-    //Get a post by ID
-    public Post getPostById(Long id) {
-        // Throws PostNotFoundException if the post is not found
-        return postRepository.findById(id)
-                .orElseThrow(() -> new PostNotFoundException("Post not found with id: " + id));
+    // Get post by ID
+    public Post getPostById() {
+        // TODO: Implement logic to get post by ID
+        return null;
     }
 
-    //Create a new post
+    // Create a new post
     public Post createPost(Post post) {
         // Save new post and return it
         return postRepository.save(post);
     }
 
-    //Delete post by ID
+    // Delete post by ID
     public void deletePost(Long id) {
-        // Delete the post if it exists - void return type
-        if (postRepository.existsById(id)) {
-            postRepository.deleteById(id);
-        }
-    }
-
-    public Post updatePost(Long id, Post updatedPost) {
+        // TODO: Implement logic to delete post by ID
+        if (postRepository.existsById(AbstractPersistable_.id)) {
+            postRepository.deleteById(AbstractPersistable_.id);
     }
 }
 
