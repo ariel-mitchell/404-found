@@ -3,7 +3,6 @@ package com.example.demo.Blog.service;
 import com.example.demo.Blog.models.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.AbstractPersistable_;
 import org.springframework.stereotype.Service;
 import com.example.demo.Blog.repository.PostRepository;
 import java.util.List;
@@ -24,15 +23,13 @@ public class PostService {
     }
 
     // Get by keyword
-    public List<Post> getPostsByKeyword() {
-        // TODO: Implement logic to search for posts by keyword
-        return null;
+    public List<Post> getPostsByKeyword(String keyword) {
+        return postRepository.findByKeyword(keyword);
     }
 
     // Get post by ID
-    public Post getPostById() {
-        // TODO: Implement logic to get post by ID
-        return null;
+    public Post getPostById(Long id) {
+        return (Post) postRepository.findAllById(id).orElse(null);
     }
 
 
