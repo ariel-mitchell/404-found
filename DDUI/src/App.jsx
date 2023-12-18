@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import PostList from './PostList';
-import CreatePost from './CreatePost';
+import PostList from '/PostList';
+import CreatePost from '/CreatePost';
 
 function App() {
 return (
