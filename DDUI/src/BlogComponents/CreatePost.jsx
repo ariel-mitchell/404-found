@@ -27,10 +27,7 @@ return (
             <label>Content:
                 <textarea name="content" value={post.content} onChange={handleChange} />
             </label>
-            <label>Author:
-                <input type="text" name="author" value={post.author} onChange={handleChange} />
-            </label>
-                <button type="submit">Create Post</button>
+            <button type="submit">Create Post</button>
         </form>
     </div>
     );
