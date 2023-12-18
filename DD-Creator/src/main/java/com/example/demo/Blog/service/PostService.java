@@ -41,7 +41,6 @@ public class PostService {
 
     // Delete post by ID
     public void deletePost(Long id) {
-        // TODO: Implement logic to delete post by ID
         if (postRepository.existsById(id)) {
             postRepository.deleteById(id);
         } else {
