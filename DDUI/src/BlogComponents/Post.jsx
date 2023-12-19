@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './BlogStyling.css';
 
-// post object as a prop
+// Post component to display a single blog post
 function Post({ post }) {
     // Initialize state variables for likes, comments, and the new comment input
     const [likes, setLikes] = useState(post.likes);
     const [comments, setComments] = useState(post.comments);
     const [newComment, setNewComment] = useState('');
 
-    // handle liking a post
+    // Handle liking a post
     const handleLike = async () => {
-        setLikes(likes + 1);
-        // TODO: Make request to backend to update the post likes
+        try {
+            // Make request to backend to update post likes
+            await axios.post(`http://localhost:8080/api/posts/${post.id}/like`);
+            // Update the local state with the new like count
+            setLikes(likes + 1);
+        } catch (error) {
+            console.error('Error liking post:', error);
+        }
     };
 
-    // handle changes to the new comment input
+    // Handle changes to the new comment input
     const handleCommentChange = (event) => {
         setNewComment(event.target.value);
     };
 
-    // submitting a new comment
+    // Submitting a new comment
     const handleCommentSubmit = async (event) => {
         event.preventDefault();
 
@@ -37,17 +44,19 @@ function Post({ post }) {
 
     // Render the post with its title, content, likes, comments, and a form to submit a new comment
     return (
-        <div>
+        <div className="post-item">
             <h2>{post.title}</h2>
             <p>{post.content}</p>
-            <button onClick={handleLike}>Like</button>
+            <button onClick={handleLike} disabled={false /* Add a condition to disable the button based on loading state */}>
+                Like
+            </button>
             <p>Likes: {likes}</p>
             <ul>
                 {comments.map((comment, index) => (
                     <li key={index}>{comment.text}</li>
                 ))}
             </ul>
-            <form onSubmit={handleCommentSubmit}>
+            <form onSubmit={handleCommentSubmit} className="create-comment-form">
                 <input type="text" value={newComment} onChange={handleCommentChange} />
                 <button type="submit">Submit Comment</button>
             </form>
