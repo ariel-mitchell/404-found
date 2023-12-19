@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
+<body>
+<h1>Add Background</h1>
+
+<nav th:replace="~{fragments :: page-header}"></nav>
+
+<form>
+    <div>
+        <label th:for="name">Background Name</label>
+        <input th:field="${background.name}" />
+        <span th:errors="${background.name}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="background">Background</label>
+        <input th:field="${background.background}" />
+        <span th:errors="${background.background}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Background" />
+</form>
+
+</body>
+</html>

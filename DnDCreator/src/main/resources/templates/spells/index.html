@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<p th:unless="${spells} and ${spells.size()}">No characters found!</p>
+
+<div>
+    <h2>Spells</h2>
+    <ul>
+        <li th:each="spell : ${spells}">
+            <a th:href="@{'/spells/view/' + ${spell.id}}" th:text="${spell.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/spells/add;}">Add Spells</a>
+
+</div>
+
+</body>
+</html>
