@@ -18,7 +18,16 @@ public class RegisterFormDTO extends LoginFormDTO {
             this.verifyPassword = verifyPassword;
         }
 
-        // Getters and setters.
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
+    // Getters and setters.
 
         public String getVerifyPassword() {
             return verifyPassword;

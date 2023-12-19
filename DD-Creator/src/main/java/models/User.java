@@ -23,6 +23,10 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    public User(String username, String password) {
+    }
+
     //getters and setters for User field
     public Long getId() {
         return id;
@@ -53,5 +57,8 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public boolean isMatchingPassword(String password){
+        return this.password.equals(password);
     }
 }
