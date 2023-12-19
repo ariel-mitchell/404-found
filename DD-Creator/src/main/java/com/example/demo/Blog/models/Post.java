@@ -1,23 +1,34 @@
 package com.example.demo.Blog.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Explicitly specify the ID generation strategy
     private Long id;
 
     private String title;
     private String content;
     private String author;
+
+    @Temporal(TemporalType.TIMESTAMP) // Specify the temporal type for dateCreated
     private Date dateCreated;
+
     private String keyword;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL) // mappedBy refers to the field in Comment class
+    private List<Comment> comments = new ArrayList<>();
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
     public String getKeyword() {
         return keyword;
     }

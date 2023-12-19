@@ -1,13 +1,15 @@
 package com.example.demo.Blog.models;
+
 import jakarta.persistence.*;
 
+@Entity
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Explicitly specify the ID generation strategy
     private Long id;
 
-    //ManyToOne
-    //JoinColum(name = "post_id", nullable = false
+    @ManyToOne
+    @JoinColumn(name = "post_id", nullable = false)
     private Post post;
 
     private String content;
