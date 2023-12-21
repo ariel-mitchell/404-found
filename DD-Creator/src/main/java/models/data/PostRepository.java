@@ -1,4 +1,4 @@
-package repository;
+package models.data;
 
 
 import models.Post;

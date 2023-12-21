@@ -4,7 +4,7 @@ import models.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.PostRepository;
+import models.data.PostRepository;
 import java.util.List;
 
 //Service for managing operations related to Post entity

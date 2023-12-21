@@ -54,6 +54,7 @@ public class AuthenticationController {
             //create and save a User
             User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
             userRepository.save(newUser);
+            //save the user's id into session
             setUserInSession(request.getSession(), newUser);
 
             return "redirect:";
