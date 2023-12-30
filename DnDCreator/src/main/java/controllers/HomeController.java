@@ -110,7 +110,7 @@ public class HomeController {
         }
 
         List<Loadout> loadoutObjs = (List<Loadout>) loadoutRepository.findAllById(equipment);
-        newCharacter.setEquipment(loadoutObjs);
+        newCharacter.setLoadout(loadoutObjs);
 
         List<Proficiencies> proficienciesObjs = (List<Proficiencies>) proficiencyRepository.findAllById(proficiencies);
         newCharacter.setProficiencies(proficienciesObjs);

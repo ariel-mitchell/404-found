@@ -7,10 +7,14 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
-public class Character extends AbstractEntity {
+public class Character{
+
+    private int id;
+    private String name;
 
     @ManyToOne
     private Alignment alignment;
@@ -34,8 +38,8 @@ public class Character extends AbstractEntity {
     public Character() {
     }
 
-    public Character(Alignment anAlignment, Background aBackground, ClassInfo aClass, Race aRace, List<Loadout> someLoadout, List<Proficiencies> someProficiencies, List<Spells> someSpells) {
-        super();
+    public Character(String name, Alignment anAlignment, Background aBackground, ClassInfo aClass, Race aRace, List<Loadout> someLoadout, List<Proficiencies> someProficiencies, List<Spells> someSpells) {
+        this.name = name;
         this.alignment = anAlignment;
         this.background = aBackground;
         this.classInfo = aClass;
@@ -45,8 +49,24 @@ public class Character extends AbstractEntity {
         this.spells = someSpells;
     }
 
+
     // Getters and Setters
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Alignment getAlignment() {
         return alignment;
@@ -80,11 +100,11 @@ public class Character extends AbstractEntity {
         this.race = race;
     }
 
-    public List<Loadout> getEquipment() {
+    public List<Loadout> getLoadout() {
         return loadouts;
     }
 
-    public void setEquipment(List<Loadout> loadouts) {
+    public void setLoadout(List<Loadout> loadouts) {
         this.loadouts = loadouts;
     }
 
@@ -102,5 +122,35 @@ public class Character extends AbstractEntity {
 
     public void setSpells(List<Spells> spells) {
         this.spells = spells;
+    }
+
+    // to string and hashcode
+
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", alignment=" + alignment +
+                ", background=" + background +
+                ", classInfo=" + classInfo +
+                ", race=" + race +
+                ", loadouts=" + loadouts +
+                ", proficiencies=" + proficiencies +
+                ", spells=" + spells +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Character character)) return false;
+        return id == character.id && Objects.equals(name, character.name) && Objects.equals(alignment, character.alignment) && Objects.equals(background, character.background) && Objects.equals(classInfo, character.classInfo) && Objects.equals(race, character.race) && Objects.equals(loadouts, character.loadouts) && Objects.equals(proficiencies, character.proficiencies) && Objects.equals(spells, character.spells);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, alignment, background, classInfo, race, loadouts, proficiencies, spells);
     }
 }

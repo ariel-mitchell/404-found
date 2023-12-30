@@ -51,7 +51,7 @@ public class CharacterData {
         } else if (fieldName.equals("classInfo")) {
             theValue = character.getClassInfo().toString();
         } else if (fieldName.equals("equipment")) {
-            theValue = character.getEquipment().toString();
+            theValue = character.getLoadout().toString();
         } else if (fieldName.equals("proficiencies")) {
             theValue = character.getProficiencies().toString();
         } else if (fieldName.equals("race")) {
@@ -83,7 +83,7 @@ public class CharacterData {
                 results.add(character);
             } else if(character.getClassInfo().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(character);
-            } else if(character.getEquipment().toString().toLowerCase().contains(value.toLowerCase())) {
+            } else if(character.getLoadout().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(character);
             } else if(character.getProficiencies().toString().toLowerCase().contains(value.toLowerCase())) {
                 results.add(character);
