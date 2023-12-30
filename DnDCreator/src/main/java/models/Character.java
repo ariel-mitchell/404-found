@@ -6,6 +6,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,7 +25,7 @@ public class Character{
 
     @ManyToMany
     @NotNull(message = "Select all equipment")
-    private List<Loadout> loadouts;
+    private Loadout loadout;
 
     @ManyToMany
     @NotNull(message = "Select two proficiencies!")
@@ -38,13 +39,13 @@ public class Character{
     public Character() {
     }
 
-    public Character(String name, Alignment anAlignment, Background aBackground, ClassInfo aClass, Race aRace, List<Loadout> someLoadout, List<Proficiencies> someProficiencies, List<Spells> someSpells) {
+    public Character(String name, Alignment anAlignment, Background aBackground, ClassInfo aClass, Race aRace, Loadout loadout, List<Proficiencies> someProficiencies, List<Spells> someSpells) {
         this.name = name;
         this.alignment = anAlignment;
         this.background = aBackground;
         this.classInfo = aClass;
         this.race = aRace;
-        this.loadouts = someLoadout;
+        this.loadout = loadout;
         this.proficiencies = someProficiencies;
         this.spells = someSpells;
     }
@@ -72,7 +73,7 @@ public class Character{
         return alignment;
     }
 
-    public void setAlignment(Alignment alignment) {
+    public void setAlignment(String alignment) {
         this.alignment = alignment;
     }
 
@@ -80,7 +81,7 @@ public class Character{
         return background;
     }
 
-    public void setBackground(Background background) {
+    public void setBackground(String background) {
         this.background = background;
     }
 
@@ -88,7 +89,7 @@ public class Character{
         return classInfo;
     }
 
-    public void setClassInfo(ClassInfo classInfo) {
+    public void setClassInfo(String classInfo) {
         this.classInfo = classInfo;
     }
 

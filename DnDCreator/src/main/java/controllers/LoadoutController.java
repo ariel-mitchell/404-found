@@ -40,7 +40,7 @@ public class LoadoutController {
         return "redirect:./";
     }
 
-    @GetMapping("view/{equipmentId}")
+    @GetMapping("view/{loadoutId}")
     public String displayViewLoadout(Model model, @PathVariable int loadoutId) {
         Optional<Loadout> optionalLoadout = loadoutRepository.findById(loadoutId);
 

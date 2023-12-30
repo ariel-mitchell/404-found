@@ -25,8 +25,11 @@ public class Loadout {
     private String equipment;
     private String treasure;
 
+    List<String> loadout = new ArrayList<>();
+    loadout.add(weapons, magicWeapons, armor, magicArmor, equipment, treasure);
 
-    @ManyToMany(mappedBy = "equipment_id")
+
+    @ManyToMany(mappedBy = "loadout_id")
     @NotNull
     private List<Character> characters = new ArrayList<>();
 
