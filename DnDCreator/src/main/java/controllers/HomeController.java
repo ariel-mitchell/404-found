@@ -79,44 +79,44 @@ public class HomeController {
     }
 
     @PostMapping("add")
-    public String processAddCharacterForm(@ModelAttribute @Valid Character newCharacter, Errors errors, Model model, @RequestParam int alignmentId, @RequestParam int backgroundId, @RequestParam int classId, @RequestParam List<Integer> equipment, @RequestParam List<Integer> proficiencies, @RequestParam int raceId, @RequestParam List<Integer> spells) {
+    public String processAddCharacterForm(@ModelAttribute @Valid Character newCharacter, Errors errors, Model model, @RequestParam int alignmentId, @RequestParam int backgroundId, @RequestParam int classId, @RequestParam List<Integer> loadout, @RequestParam List<Integer> proficiencies, @RequestParam int raceId, @RequestParam List<Integer> spells) {
 
         if(errors.hasErrors()) {
             return "add";
         }
 
-        Optional<Alignment> optionalAlignment = alignmentRepository.findById(alignmentId);
-        if (optionalAlignment.isPresent()) {
-            Alignment alignment = optionalAlignment.get();
+        Optional<Alignment> optionalString = alignmentRepository.findById(alignmentId);
+        if (optionalString.isPresent()) {
+            String alignment = String.valueOf(optionalString.get());
             newCharacter.setAlignment(alignment);
         }
 
         Optional<ClassInfo> optionalClassInfo = classRepository.findById(classId);
         if (optionalClassInfo.isPresent()) {
             ClassInfo classInfo = optionalClassInfo.get();
-            newCharacter.setClassInfo(classInfo);
+            newCharacter.setClassInfo(String.valueOf(classInfo));
         }
 
         Optional<Race> optionalRace = raceRepository.findById(raceId);
         if (optionalRace.isPresent()) {
-            Race race = optionalRace.get();
+            String race = String.valueOf(optionalRace.get());
             newCharacter.setRace(race);
         }
 
         Optional<Background> optionalBackground = backgroundRepository.findById(backgroundId);
         if (optionalBackground.isPresent()) {
             Background background = optionalBackground.get();
-            newCharacter.setBackground(background);
+            newCharacter.setBackground(String.valueOf(background));
         }
 
-        List<Loadout> loadoutObjs = (List<Loadout>) loadoutRepository.findAllById(equipment);
-        newCharacter.setLoadout(loadoutObjs);
+        List<Loadout> loadoutObjs = (List<Loadout>) loadoutRepository.findAllById(loadout);
+        newCharacter.setLoadout((Loadout) loadoutObjs);
 
         List<Proficiencies> proficienciesObjs = (List<Proficiencies>) proficiencyRepository.findAllById(proficiencies);
-        newCharacter.setProficiencies(proficienciesObjs);
+        newCharacter.setProficiencies(proficienciesObjs.toString());
 
         List<Spells> spellObjs = (List<Spells>) spellRepository.findAllById(spells);
-        newCharacter.setSpells(spellObjs);
+        newCharacter.setSpells(spellObjs.toString());
 
         characterRepository.save(newCharacter);
         return "redirect:";

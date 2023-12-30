@@ -1,12 +1,9 @@
 package models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,32 +11,32 @@ import java.util.Objects;
 @Entity
 public class Character{
 
+    @Id
+    @GeneratedValue
     private int id;
+
     private String name;
 
     @ManyToOne
-    private Alignment alignment;
-    private Background background;
-    private ClassInfo classInfo;
-    private Race race;
+    private String alignment;
+    private String background;
+    private String classInfo;
+    private String race;
 
     @ManyToMany
     @NotNull(message = "Select all equipment")
     private Loadout loadout;
 
     @ManyToMany
-    @NotNull(message = "Select two proficiencies!")
-    @Size(min = 2, max = 2)
-    private List<Proficiencies> proficiencies;
+    private List<String> proficiencies;
 
     @ManyToMany
-    @Size(max = 2)
-    private List<Spells> spells;
+    private List<String> spells;
 
     public Character() {
     }
 
-    public Character(String name, Alignment anAlignment, Background aBackground, ClassInfo aClass, Race aRace, Loadout loadout, List<Proficiencies> someProficiencies, List<Spells> someSpells) {
+    public Character(String name, String anAlignment, String aBackground, String aClass, String aRace, Loadout loadout, List<String> someProficiencies, List<String> someSpells) {
         this.name = name;
         this.alignment = anAlignment;
         this.background = aBackground;
@@ -69,7 +66,7 @@ public class Character{
         this.name = name;
     }
 
-    public Alignment getAlignment() {
+    public String getAlignment() {
         return alignment;
     }
 
@@ -77,7 +74,7 @@ public class Character{
         this.alignment = alignment;
     }
 
-    public Background getBackground() {
+    public String getBackground() {
         return background;
     }
 
@@ -85,7 +82,7 @@ public class Character{
         this.background = background;
     }
 
-    public ClassInfo getClassInfo() {
+    public String getClassInfo() {
         return classInfo;
     }
 
@@ -93,36 +90,36 @@ public class Character{
         this.classInfo = classInfo;
     }
 
-    public Race getRace() {
+    public String getRace() {
         return race;
     }
 
-    public void setRace(Race race) {
+    public void setRace(String race) {
         this.race = race;
     }
 
-    public List<Loadout> getLoadout() {
-        return loadouts;
+    public Loadout getLoadout() {
+        return loadout;
     }
 
-    public void setLoadout(List<Loadout> loadouts) {
-        this.loadouts = loadouts;
+    public void setLoadout(Loadout loadout) {
+        this.loadout = loadout;
     }
 
-    public List<Proficiencies> getProficiencies() {
+    public List<String> getProficiencies() {
         return proficiencies;
     }
 
-    public void setProficiencies(List<Proficiencies> proficiencies) {
-        this.proficiencies = proficiencies;
+    public void setProficiencies(String proficiencies) {
+        this.proficiencies = Collections.singletonList(proficiencies);
     }
 
-    public List<Spells> getSpells() {
-        return spells;
+    public String getSpells() {
+        return spells.toString();
     }
 
-    public void setSpells(List<Spells> spells) {
-        this.spells = spells;
+    public void setSpells(String spells) {
+        this.spells = Collections.singletonList(spells);
     }
 
     // to string and hashcode
@@ -137,7 +134,7 @@ public class Character{
                 ", background=" + background +
                 ", classInfo=" + classInfo +
                 ", race=" + race +
-                ", loadouts=" + loadouts +
+                ", loadout=" + loadout +
                 ", proficiencies=" + proficiencies +
                 ", spells=" + spells +
                 '}';
@@ -147,11 +144,11 @@ public class Character{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Character character)) return false;
-        return id == character.id && Objects.equals(name, character.name) && Objects.equals(alignment, character.alignment) && Objects.equals(background, character.background) && Objects.equals(classInfo, character.classInfo) && Objects.equals(race, character.race) && Objects.equals(loadouts, character.loadouts) && Objects.equals(proficiencies, character.proficiencies) && Objects.equals(spells, character.spells);
+        return id == character.id && Objects.equals(name, character.name) && Objects.equals(alignment, character.alignment) && Objects.equals(background, character.background) && Objects.equals(classInfo, character.classInfo) && Objects.equals(race, character.race) && Objects.equals(loadout, character.loadout) && Objects.equals(proficiencies, character.proficiencies) && Objects.equals(spells, character.spells);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, alignment, background, classInfo, race, loadouts, proficiencies, spells);
+        return Objects.hash(id, name, alignment, background, classInfo, race, loadout, proficiencies, spells);
     }
 }

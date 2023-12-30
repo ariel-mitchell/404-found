@@ -1,7 +1,6 @@
 package models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
@@ -15,18 +14,15 @@ public class Loadout {
     @GeneratedValue
     private int id;
 
-    //functionality without some of the pieces??
+    private String name;
 
-    @NotBlank(message = "Select Equipment!")
-    private String weapons;
-    private String magicWeapons;
+    @ManyToOne
+    private String weapon;
+    private String magicWeapon;
     private String armor;
     private String magicArmor;
     private String equipment;
     private String treasure;
-
-    List<String> loadout = new ArrayList<>();
-    loadout.add(weapons, magicWeapons, armor, magicArmor, equipment, treasure);
 
 
     @ManyToMany(mappedBy = "loadout_id")
@@ -35,10 +31,10 @@ public class Loadout {
 
     public Loadout(){}
 
-    public Loadout(String weapons, String magicWeapons, String armor, String magicArmor, String equipment, String treasure) {
+    public Loadout(String weapon, String magicWeapon, String armor, String magicArmor, String equipment, String treasure) {
         this();
-        this.weapons = weapons;
-        this.magicWeapons = magicWeapons;
+        this.weapon = weapon;
+        this.magicWeapon = magicWeapon;
         this.armor = armor;
         this.magicArmor = magicArmor;
         this.equipment = equipment;
@@ -50,8 +46,8 @@ public class Loadout {
     public String toString() {
         return "Equipment{" +
                 "id=" + id +
-                ", weapons='" + weapons + '\'' +
-                ", magicWeapons='" + magicWeapons + '\'' +
+                ", weapons='" + weapon + '\'' +
+                ", magicWeapons='" + magicWeapon + '\'' +
                 ", armor='" + armor + '\'' +
                 ", magicArmor='" + magicArmor + '\'' +
                 ", equipment='" + equipment + '\'' +
@@ -64,15 +60,16 @@ public class Loadout {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Loadout loadout1)) return false;
-        return id == loadout1.id && Objects.equals(weapons, loadout1.weapons) && Objects.equals(magicWeapons, loadout1.magicWeapons) && Objects.equals(armor, loadout1.armor) && Objects.equals(magicArmor, loadout1.magicArmor) && Objects.equals(equipment, loadout1.equipment) && Objects.equals(treasure, loadout1.treasure) && Objects.equals(characters, loadout1.characters);
+        return id == loadout1.id && Objects.equals(weapon, loadout1.weapon) && Objects.equals(magicWeapon, loadout1.magicWeapon) && Objects.equals(armor, loadout1.armor) && Objects.equals(magicArmor, loadout1.magicArmor) && Objects.equals(equipment, loadout1.equipment) && Objects.equals(treasure, loadout1.treasure) && Objects.equals(characters, loadout1.characters);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, weapons, magicWeapons, armor, magicArmor, equipment, treasure, characters);
+        return Objects.hash(id, weapon, magicWeapon, armor, magicArmor, equipment, treasure, characters);
     }
 
     //Getters and Setters
+
     public int getId() {
         return id;
     }
@@ -81,20 +78,28 @@ public class Loadout {
         this.id = id;
     }
 
-    public String getWeapons() {
-        return weapons;
+    public String getName() {
+        return name;
     }
 
-    public void setWeapons(String weapons) {
-        this.weapons = weapons;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getMagicWeapons() {
-        return magicWeapons;
+    public String getWeapon() {
+        return weapon;
     }
 
-    public void setMagicWeapons(String magicWeapons) {
-        this.magicWeapons = magicWeapons;
+    public void setWeapon(String weapon) {
+        this.weapon = weapon;
+    }
+
+    public String getMagicWeapon() {
+        return magicWeapon;
+    }
+
+    public void setMagicWeapon(String magicWeapon) {
+        this.magicWeapon = magicWeapon;
     }
 
     public String getArmor() {
@@ -132,5 +137,8 @@ public class Loadout {
     public List<Character> getCharacters() {
         return characters;
     }
-    //End Getters and Setters
+
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
+    }
 }

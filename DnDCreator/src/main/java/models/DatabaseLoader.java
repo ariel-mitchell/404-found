@@ -1,11 +1,7 @@
 package models;
 
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import models.Character;
-import models.*;
 import models.Data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,47 +16,34 @@ public class DatabaseLoader implements CommandLineRunner {
     @OneToMany
     private final CharacterRepository characterRepository;
 
-    @ManyToOne
-    private final BackgroundRepository backgroundRepository;
-    private final AlignmentRepository alignmentRepository;
-    private final ClassRepository classRepository;
-    private final RaceRepository raceRepository;
-
     @ManyToMany
     private final LoadoutRepository loadoutRepository;
-    private final ProficiencyRepository proficiencyRepository;
-    private final SpellRepository spellRepository;
+
 
     @Autowired
     public DatabaseLoader(CharacterRepository characterRepository, BackgroundRepository backgroundRepository, AlignmentRepository alignmentRepository, ClassRepository classRepository, LoadoutRepository loadoutRepository, ProficiencyRepository proficiencyRepository, RaceRepository raceRepository, SpellRepository spellRepository) {
         this.characterRepository = characterRepository;
-        this.backgroundRepository = backgroundRepository;
-        this.alignmentRepository = alignmentRepository;
-        this.classRepository = classRepository;
         this.loadoutRepository = loadoutRepository;
-        this.proficiencyRepository = proficiencyRepository;
-        this.raceRepository = raceRepository;
-        this.spellRepository = spellRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
         Character character1 = new Character();
-        Character character2= new Character();
+        Character character2 = new Character();
         List<Character> characters = new ArrayList<>();
-        List<String> loadout1 = (List<String>) new Loadout();
+        List<Loadout> loadouts = new ArrayList<>();
 
         Loadout loadout1 = new Loadout();
-        loadout1.setWeapons("sword");
-        loadout1.setMagicWeapons("staff");
+        loadout1.setWeapon("sword");
+        loadout1.setMagicWeapon("staff");
         loadout1.setArmor("armor");
         loadout1.setMagicArmor("mage");
         loadout1.setEquipment("equip");
         loadout1.setTreasure("gold");
 
         Loadout loadout2 = new Loadout();
-        loadout2.setWeapons("spear");
-        loadout2.setMagicWeapons("wand");
+        loadout2.setWeapon("spear");
+        loadout2.setMagicWeapon("wand");
         loadout2.setArmor("mail");
         loadout2.setMagicArmor("robe");
         loadout2.setEquipment("shovel");
@@ -72,26 +55,27 @@ public class DatabaseLoader implements CommandLineRunner {
         character1.setBackground("background");
         character1.setClassInfo("classInfo1");
         character1.setLoadout(loadout1);
+        character1.setProficiencies("proficiencies1");
+        character1.setProficiencies("proficiencies2");
+        character1.setRace("Orc");
+        character1.setSpells("Abra");
+        character1.setSpells("Kadabra");
 
+        character2.setId(2);
+        character2.setName("name2");
+        character2.setAlignment("alignment2");
+        character2.setBackground("background2");
+        character2.setClassInfo("classInfo2");
+        character2.setLoadout(loadout2);
+        character2.setProficiencies("five");
+        character2.setProficiencies("six");
+        character2.setRace("Human");
+        character2.setSpells("Ala");
+        character2.setSpells("Kazam");
 
+        characterRepository.save(character1);
+        characterRepository.save(character2);
+        loadoutRepository.save(loadout1);
+        loadoutRepository.save(loadout2);
     }
-
-    @Override
-    public void run(String name, Alignment someAlignment, Background somebackground, ClassInfo someClass, List<Loadout> someLoadout, List<Proficiencies> someProficiencies, Race someRace, List<Spells> someSpells) throws Exception {
-        this.characterRepository.save(new Character("name", someAlignment, somebackground, someClass, someRace, someLoadout, someProficiencies, someSpells));
-    }
-
-    @Override
-    public void run(Object... args) throws Exception {
-        this.characterRepository.save(new Character(Alignment, Background, ClassInfo, Race, Loadout, Proficiencies, Spells));
-    }
-
-    @Override
-    public void run(String... args) throws Exception {
-        this.backgroundRepository.save(new Background("someBackground"));
-        this.alignmentRepository.save(new Alignment("someAlignment"));
-        this.classRepository.save(new ClassInfo("someClassInfo"));
-        this.raceRepository.save(new Race("someRace"));
-    }
-
 }
