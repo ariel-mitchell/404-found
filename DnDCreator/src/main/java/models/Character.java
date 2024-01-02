@@ -1,44 +1,54 @@
 package models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 
 @Entity
-public class Character{
-
-    @Id
-    @GeneratedValue
-    private int id;
-
-    private String name;
+public class Character extends AbstractEntity{
 
     @ManyToOne
+    @NotNull(message = "Choose an alignment from the list")
     private String alignment;
-    private String background;
+
+    @ManyToOne
+    @NotNull(message = "Choose a class from the list")
     private String classInfo;
+
+    @ManyToOne
+    @NotNull(message = "Choose a race")
     private String race;
 
+    @ManyToOne
+    @NotBlank(message = "Enter a custom background")
+    @Size(max = 1000)
+    private String background;
+
+
     @ManyToMany
-    @NotNull(message = "Select all equipment")
+    @NotNull
     private Loadout loadout;
 
     @ManyToMany
+    @Size(max = 2, message = "Choose up to 2 proficiencies.")
     private List<String> proficiencies;
 
     @ManyToMany
+    @Size(max = 2, message = "Choose up to 2 spells.")
     private List<String> spells;
 
     public Character() {
     }
 
-    public Character(String name, String anAlignment, String aBackground, String aClass, String aRace, Loadout loadout, List<String> someProficiencies, List<String> someSpells) {
-        this.name = name;
-        this.alignment = anAlignment;
+    public Character(String alignment, String aBackground, String aClass, String aRace, Loadout loadout, List<String> someProficiencies, List<String> someSpells) {
+        super();
+        this.alignment = alignment;
         this.background = aBackground;
         this.classInfo = aClass;
         this.race = aRace;
@@ -48,38 +58,12 @@ public class Character{
     }
 
 
-    // Getters and Setters
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getAlignment() {
         return alignment;
     }
 
     public void setAlignment(String alignment) {
         this.alignment = alignment;
-    }
-
-    public String getBackground() {
-        return background;
-    }
-
-    public void setBackground(String background) {
-        this.background = background;
     }
 
     public String getClassInfo() {
@@ -98,6 +82,14 @@ public class Character{
         this.race = race;
     }
 
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+
     public Loadout getLoadout() {
         return loadout;
     }
@@ -110,45 +102,15 @@ public class Character{
         return proficiencies;
     }
 
-    public void setProficiencies(String proficiencies) {
-        this.proficiencies = Collections.singletonList(proficiencies);
+    public void setProficiencies(List<String> proficiencies) {
+        this.proficiencies = proficiencies;
     }
 
-    public String getSpells() {
-        return spells.toString();
+    public List<String> getSpells() {
+        return spells;
     }
 
-    public void setSpells(String spells) {
-        this.spells = Collections.singletonList(spells);
-    }
-
-    // to string and hashcode
-
-
-    @Override
-    public String toString() {
-        return "Character{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", alignment=" + alignment +
-                ", background=" + background +
-                ", classInfo=" + classInfo +
-                ", race=" + race +
-                ", loadout=" + loadout +
-                ", proficiencies=" + proficiencies +
-                ", spells=" + spells +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Character character)) return false;
-        return id == character.id && Objects.equals(name, character.name) && Objects.equals(alignment, character.alignment) && Objects.equals(background, character.background) && Objects.equals(classInfo, character.classInfo) && Objects.equals(race, character.race) && Objects.equals(loadout, character.loadout) && Objects.equals(proficiencies, character.proficiencies) && Objects.equals(spells, character.spells);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, alignment, background, classInfo, race, loadout, proficiencies, spells);
+    public void setSpells(List<String> spells) {
+        this.spells = spells;
     }
 }

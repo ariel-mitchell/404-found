@@ -1,28 +1,24 @@
 package models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
+import models.loadout_models.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
-public class Loadout {
-
-    @Id
-    @GeneratedValue
-    private int id;
-
-    private String name;
+public class Loadout extends AbstractEntity{
 
     @ManyToOne
-    private String weapon;
-    private String magicWeapon;
-    private String armor;
-    private String magicArmor;
-    private String equipment;
-    private String treasure;
+    private Weapon weapon;
+    private MagicWeapon magicWeapon;
+    private Armor armor;
+    private MagicArmor magicArmor;
+    private Equipment equipment;
+    private Treasure treasure;
 
 
     @ManyToMany(mappedBy = "loadout_id")
@@ -31,7 +27,7 @@ public class Loadout {
 
     public Loadout(){}
 
-    public Loadout(String weapon, String magicWeapon, String armor, String magicArmor, String equipment, String treasure) {
+    public Loadout(Weapon weapon, MagicWeapon magicWeapon, Armor armor, MagicArmor magicArmor, Equipment equipment, Treasure treasure) {
         this();
         this.weapon = weapon;
         this.magicWeapon = magicWeapon;
@@ -41,96 +37,54 @@ public class Loadout {
         this.treasure = treasure;
     }
 
-    //toString(), equals, hashCode()
-    @Override
-    public String toString() {
-        return "Equipment{" +
-                "id=" + id +
-                ", weapons='" + weapon + '\'' +
-                ", magicWeapons='" + magicWeapon + '\'' +
-                ", armor='" + armor + '\'' +
-                ", magicArmor='" + magicArmor + '\'' +
-                ", equipment='" + equipment + '\'' +
-                ", treasure='" + treasure + '\'' +
-                ", characters=" + characters +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Loadout loadout1)) return false;
-        return id == loadout1.id && Objects.equals(weapon, loadout1.weapon) && Objects.equals(magicWeapon, loadout1.magicWeapon) && Objects.equals(armor, loadout1.armor) && Objects.equals(magicArmor, loadout1.magicArmor) && Objects.equals(equipment, loadout1.equipment) && Objects.equals(treasure, loadout1.treasure) && Objects.equals(characters, loadout1.characters);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, weapon, magicWeapon, armor, magicArmor, equipment, treasure, characters);
-    }
-
     //Getters and Setters
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getWeapon() {
+    public Weapon getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(String weapon) {
+    public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
 
-    public String getMagicWeapon() {
+    public MagicWeapon getMagicWeapon() {
         return magicWeapon;
     }
 
-    public void setMagicWeapon(String magicWeapon) {
+    public void setMagicWeapon(MagicWeapon magicWeapon) {
         this.magicWeapon = magicWeapon;
     }
 
-    public String getArmor() {
+    public Armor getArmor() {
         return armor;
     }
 
-    public void setArmor(String armor) {
+    public void setArmor(Armor armor) {
         this.armor = armor;
     }
 
-    public String getMagicArmor() {
+    public MagicArmor getMagicArmor() {
         return magicArmor;
     }
 
-    public void setMagicArmor(String magicArmor) {
+    public void setMagicArmor(MagicArmor magicArmor) {
         this.magicArmor = magicArmor;
     }
 
-    public String getEquipment() {
+    public Equipment getEquipment() {
         return equipment;
     }
 
-    public void setEquipment(String equipment) {
+    public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }
 
-    public String getTreasure() {
+    public Treasure getTreasure() {
         return treasure;
     }
 
-    public void setTreasure(String treasure) {
+    public void setTreasure(Treasure treasure) {
         this.treasure = treasure;
     }
 

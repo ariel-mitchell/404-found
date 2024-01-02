@@ -65,7 +65,7 @@ const CharacterCrud = ({load, characters }) => {
             background: background,
             classInfo: classInfo,
             race: race,
-            loadouts: loadouts,
+            loadout: loadout,
             proficiencies: proficiencies,
             spells: spells,
         });
@@ -91,7 +91,7 @@ const CharacterCrud = ({load, characters }) => {
                         type="text"
                         hidden
                         value={id}
-                        onChange={e => setName(e.target.value)}
+                        onChange={e => setId(e.target.value)}
                     />
                     <label>Name</label>
                     <input
@@ -145,7 +145,7 @@ const CharacterCrud = ({load, characters }) => {
                     <label>Loadout</label>
                         <input
                             type="text"
-                            value={loadouts}
+                            value={loadout}
                             placeholder="Loadout"
                             onChange={e => setLoadout(e.target.value)}
                         />

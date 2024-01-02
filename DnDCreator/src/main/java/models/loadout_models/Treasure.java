@@ -11,23 +11,10 @@ import java.util.List;
 @Entity
 public class Treasure extends AbstractEntity {
 
-    public String treasure;
-
     @ManyToMany(mappedBy = "treasure_id")
     private List<Loadout> loadouts = new ArrayList<>();
 
-    public Treasure() {}
-
-    public Treasure(String treasure) {
+    public Treasure() {
         super();
-        this.treasure = treasure;
-    }
-
-    public String getTreasure() {
-        return treasure;
-    }
-
-    public void setTreasure(String treasure) {
-        this.treasure = treasure;
     }
 }

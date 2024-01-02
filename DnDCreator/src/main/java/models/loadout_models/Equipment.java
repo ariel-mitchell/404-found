@@ -11,23 +11,10 @@ import java.util.List;
 @Entity
 public class Equipment extends AbstractEntity {
 
-    public String equipment;
-
     @ManyToMany(mappedBy = "equipment_id")
     private List<Loadout> loadouts = new ArrayList<>();
 
-    public Equipment() {}
-
-    public Equipment (String equipment) {
+    public Equipment () {
         super();
-        this.equipment = equipment;
-    }
-
-    public String getEquipment() {
-        return equipment;
-    }
-
-    public void setEquipment(String equipment) {
-        this.equipment = equipment;
     }
 }

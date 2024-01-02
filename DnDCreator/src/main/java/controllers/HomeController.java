@@ -19,27 +19,7 @@ public class HomeController {
 
     @Autowired
     private CharacterRepository characterRepository;
-
-    @Autowired
-    private AlignmentRepository alignmentRepository;
-
-    @Autowired
-    private BackgroundRepository backgroundRepository;
-
-    @Autowired
-    private ClassRepository classRepository;
-
-    @Autowired
     private LoadoutRepository loadoutRepository;
-
-    @Autowired
-    private ProficiencyRepository proficiencyRepository;
-
-    @Autowired
-    private RaceRepository raceRepository;
-
-    @Autowired
-    private SpellRepository spellRepository;
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -54,26 +34,8 @@ public class HomeController {
         model.addAttribute("title", "Add Character");
         model.addAttribute(new Character());
 
-        List<Alignment> alignment = (List<Alignment>) alignmentRepository.findAll();
-        model.addAttribute("alignment", alignment);
-
-        List<Background> background = (List<Background>) backgroundRepository.findAll();
-        model.addAttribute("background", background);
-
-        List<ClassInfo> classInfo = (List<ClassInfo>) classRepository.findAll();
-        model.addAttribute("class info", classInfo);
-
         List<Loadout> loadouts = (List<Loadout>) loadoutRepository.findAll();
         model.addAttribute("loadout", loadouts);
-
-        List<Proficiencies> proficiencies = (List<Proficiencies>) proficiencyRepository.findAll();
-        model.addAttribute("proficiencies", proficiencies);
-
-        List<Race> race = (List<Race>) raceRepository.findAll();
-        model.addAttribute("race", race);
-
-        List<Spells> spells = (List<Spells>) spellRepository.findAll();
-        model.addAttribute("spells", spells);
 
         return "add";
     }
@@ -85,38 +47,8 @@ public class HomeController {
             return "add";
         }
 
-        Optional<Alignment> optionalString = alignmentRepository.findById(alignmentId);
-        if (optionalString.isPresent()) {
-            String alignment = String.valueOf(optionalString.get());
-            newCharacter.setAlignment(alignment);
-        }
-
-        Optional<ClassInfo> optionalClassInfo = classRepository.findById(classId);
-        if (optionalClassInfo.isPresent()) {
-            ClassInfo classInfo = optionalClassInfo.get();
-            newCharacter.setClassInfo(String.valueOf(classInfo));
-        }
-
-        Optional<Race> optionalRace = raceRepository.findById(raceId);
-        if (optionalRace.isPresent()) {
-            String race = String.valueOf(optionalRace.get());
-            newCharacter.setRace(race);
-        }
-
-        Optional<Background> optionalBackground = backgroundRepository.findById(backgroundId);
-        if (optionalBackground.isPresent()) {
-            Background background = optionalBackground.get();
-            newCharacter.setBackground(String.valueOf(background));
-        }
-
         List<Loadout> loadoutObjs = (List<Loadout>) loadoutRepository.findAllById(loadout);
         newCharacter.setLoadout((Loadout) loadoutObjs);
-
-        List<Proficiencies> proficienciesObjs = (List<Proficiencies>) proficiencyRepository.findAllById(proficiencies);
-        newCharacter.setProficiencies(proficienciesObjs.toString());
-
-        List<Spells> spellObjs = (List<Spells>) spellRepository.findAllById(spells);
-        newCharacter.setSpells(spellObjs.toString());
 
         characterRepository.save(newCharacter);
         return "redirect:";

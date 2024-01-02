@@ -11,23 +11,10 @@ import java.util.List;
 @Entity
 public class MagicWeapon extends AbstractEntity {
 
-    public String magicWeapon;
-
     @ManyToMany(mappedBy = "magicWeapon_id")
     private List<Loadout> loadouts = new ArrayList<>();
 
-    public MagicWeapon() {}
-
-    public MagicWeapon (String magicWeapon) {
+    public MagicWeapon () {
         super();
-        this.magicWeapon = magicWeapon;
-    }
-
-    public String getMagicWeapon() {
-        return magicWeapon;
-    }
-
-    public void setMagicWeapon(String magicWeapon) {
-        this.magicWeapon = magicWeapon;
     }
 }

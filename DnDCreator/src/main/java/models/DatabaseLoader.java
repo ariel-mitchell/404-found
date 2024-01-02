@@ -1,8 +1,11 @@
 package models;
 
+import models.loadout_models.*;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import models.Data.*;
+import models.Data.CharacterRepository;
+import models.Data.LoadoutRepository;
+import models.loadout_models.Weapon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,7 +24,7 @@ public class DatabaseLoader implements CommandLineRunner {
 
 
     @Autowired
-    public DatabaseLoader(CharacterRepository characterRepository, BackgroundRepository backgroundRepository, AlignmentRepository alignmentRepository, ClassRepository classRepository, LoadoutRepository loadoutRepository, ProficiencyRepository proficiencyRepository, RaceRepository raceRepository, SpellRepository spellRepository) {
+    public DatabaseLoader(CharacterRepository characterRepository,  LoadoutRepository loadoutRepository) {
         this.characterRepository = characterRepository;
         this.loadoutRepository = loadoutRepository;
     }
@@ -29,25 +32,29 @@ public class DatabaseLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Character character1 = new Character();
-        Character character2 = new Character();
-        List<Character> characters = new ArrayList<>();
-        List<Loadout> loadouts = new ArrayList<>();
+
+        Weapon sword = new Weapon();
+        MagicWeapon staff = new MagicWeapon();
+        Armor armor = new Armor();
+        MagicArmor mage = new MagicArmor();
+        Equipment equip = new Equipment();
+        Treasure gold = new Treasure();
 
         Loadout loadout1 = new Loadout();
-        loadout1.setWeapon("sword");
-        loadout1.setMagicWeapon("staff");
-        loadout1.setArmor("armor");
-        loadout1.setMagicArmor("mage");
-        loadout1.setEquipment("equip");
-        loadout1.setTreasure("gold");
+        loadout1.setWeapon(sword);
+        loadout1.setMagicWeapon(staff);
+        loadout1.setArmor(armor);
+        loadout1.setMagicArmor(mage);
+        loadout1.setEquipment(equip);
+        loadout1.setTreasure(gold);
 
-        Loadout loadout2 = new Loadout();
-        loadout2.setWeapon("spear");
-        loadout2.setMagicWeapon("wand");
-        loadout2.setArmor("mail");
-        loadout2.setMagicArmor("robe");
-        loadout2.setEquipment("shovel");
-        loadout2.setTreasure("silver");
+        List<String> prof = new ArrayList<>();
+        prof.add("proficiencies");
+        prof.add("profic");
+
+        List<String> spell = new ArrayList<>();
+        spell.add("Abra");
+        spell.add("Kadabra");
 
         character1.setId(1);
         character1.setName("name1");
@@ -55,27 +62,12 @@ public class DatabaseLoader implements CommandLineRunner {
         character1.setBackground("background");
         character1.setClassInfo("classInfo1");
         character1.setLoadout(loadout1);
-        character1.setProficiencies("proficiencies1");
-        character1.setProficiencies("proficiencies2");
+        character1.setProficiencies(prof);
         character1.setRace("Orc");
-        character1.setSpells("Abra");
-        character1.setSpells("Kadabra");
+        character1.setSpells(spell);
 
-        character2.setId(2);
-        character2.setName("name2");
-        character2.setAlignment("alignment2");
-        character2.setBackground("background2");
-        character2.setClassInfo("classInfo2");
-        character2.setLoadout(loadout2);
-        character2.setProficiencies("five");
-        character2.setProficiencies("six");
-        character2.setRace("Human");
-        character2.setSpells("Ala");
-        character2.setSpells("Kazam");
 
         characterRepository.save(character1);
-        characterRepository.save(character2);
         loadoutRepository.save(loadout1);
-        loadoutRepository.save(loadout2);
     }
 }

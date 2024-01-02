@@ -28,7 +28,7 @@ const CharacterList = ({ characters, editCharacter, deleteCharacter}) => {
                             <td>{character.background}</td>
                             <td>{character.classInfo}</td>
                             <td>{character.race}</td>
-                            <td>{character.loadouts}</td>
+                            <td>{character.loadout}</td>
                             <td>{character.proficiencies}</td>
                             <td>{character.spells}</td>
                             <td>
