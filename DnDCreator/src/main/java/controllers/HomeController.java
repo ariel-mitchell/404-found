@@ -19,27 +19,7 @@ public class HomeController {
 
     @Autowired
     private CharacterRepository characterRepository;
-
-    @Autowired
-    private AlignmentRepository alignmentRepository;
-
-    @Autowired
-    private BackgroundRepository backgroundRepository;
-
-    @Autowired
-    private ClassRepository classRepository;
-
-    @Autowired
     private LoadoutRepository loadoutRepository;
-
-    @Autowired
-    private ProficiencyRepository proficiencyRepository;
-
-    @Autowired
-    private RaceRepository raceRepository;
-
-    @Autowired
-    private SpellRepository spellRepository;
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -54,69 +34,21 @@ public class HomeController {
         model.addAttribute("title", "Add Character");
         model.addAttribute(new Character());
 
-        List<Alignment> alignment = (List<Alignment>) alignmentRepository.findAll();
-        model.addAttribute("alignment", alignment);
-
-        List<Background> background = (List<Background>) backgroundRepository.findAll();
-        model.addAttribute("background", background);
-
-        List<ClassInfo> classInfo = (List<ClassInfo>) classRepository.findAll();
-        model.addAttribute("class info", classInfo);
-
         List<Loadout> loadouts = (List<Loadout>) loadoutRepository.findAll();
         model.addAttribute("loadout", loadouts);
-
-        List<Proficiencies> proficiencies = (List<Proficiencies>) proficiencyRepository.findAll();
-        model.addAttribute("proficiencies", proficiencies);
-
-        List<Race> race = (List<Race>) raceRepository.findAll();
-        model.addAttribute("race", race);
-
-        List<Spells> spells = (List<Spells>) spellRepository.findAll();
-        model.addAttribute("spells", spells);
 
         return "add";
     }
 
     @PostMapping("add")
-    public String processAddCharacterForm(@ModelAttribute @Valid Character newCharacter, Errors errors, Model model, @RequestParam int alignmentId, @RequestParam int backgroundId, @RequestParam int classId, @RequestParam List<Integer> equipment, @RequestParam List<Integer> proficiencies, @RequestParam int raceId, @RequestParam List<Integer> spells) {
+    public String processAddCharacterForm(@ModelAttribute @Valid Character newCharacter, Errors errors, Model model, @RequestParam int alignmentId, @RequestParam int backgroundId, @RequestParam int classId, @RequestParam List<Integer> loadout, @RequestParam List<Integer> proficiencies, @RequestParam int raceId, @RequestParam List<Integer> spells) {
 
         if(errors.hasErrors()) {
             return "add";
         }
 
-        Optional<Alignment> optionalAlignment = alignmentRepository.findById(alignmentId);
-        if (optionalAlignment.isPresent()) {
-            Alignment alignment = optionalAlignment.get();
-            newCharacter.setAlignment(alignment);
-        }
-
-        Optional<ClassInfo> optionalClassInfo = classRepository.findById(classId);
-        if (optionalClassInfo.isPresent()) {
-            ClassInfo classInfo = optionalClassInfo.get();
-            newCharacter.setClassInfo(classInfo);
-        }
-
-        Optional<Race> optionalRace = raceRepository.findById(raceId);
-        if (optionalRace.isPresent()) {
-            Race race = optionalRace.get();
-            newCharacter.setRace(race);
-        }
-
-        Optional<Background> optionalBackground = backgroundRepository.findById(backgroundId);
-        if (optionalBackground.isPresent()) {
-            Background background = optionalBackground.get();
-            newCharacter.setBackground(background);
-        }
-
-        List<Loadout> loadoutObjs = (List<Loadout>) loadoutRepository.findAllById(equipment);
-        newCharacter.setEquipment(loadoutObjs);
-
-        List<Proficiencies> proficienciesObjs = (List<Proficiencies>) proficiencyRepository.findAllById(proficiencies);
-        newCharacter.setProficiencies(proficienciesObjs);
-
-        List<Spells> spellObjs = (List<Spells>) spellRepository.findAllById(spells);
-        newCharacter.setSpells(spellObjs);
+        List<Loadout> loadoutObjs = (List<Loadout>) loadoutRepository.findAllById(loadout);
+        newCharacter.setLoadout((Loadout) loadoutObjs);
 
         characterRepository.save(newCharacter);
         return "redirect:";

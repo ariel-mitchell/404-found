@@ -3,6 +3,7 @@ package models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -10,97 +11,106 @@ import java.util.List;
 
 
 @Entity
-public class Character extends AbstractEntity {
+public class Character extends AbstractEntity{
 
     @ManyToOne
-    private Alignment alignment;
-    private Background background;
-    private ClassInfo classInfo;
-    private Race race;
+    @NotNull(message = "Choose an alignment from the list")
+    private String alignment;
+
+    @ManyToOne
+    @NotNull(message = "Choose a class from the list")
+    private String classInfo;
+
+    @ManyToOne
+    @NotNull(message = "Choose a race")
+    private String race;
+
+    @ManyToOne
+    @NotBlank(message = "Enter a custom background")
+    @Size(max = 1000)
+    private String background;
+
 
     @ManyToMany
-    @NotNull(message = "Select all equipment")
-    private List<Loadout> loadouts;
+    @NotNull
+    private Loadout loadout;
 
     @ManyToMany
-    @NotNull(message = "Select two proficiencies!")
-    @Size(min = 2, max = 2)
-    private List<Proficiencies> proficiencies;
+    @Size(max = 2, message = "Choose up to 2 proficiencies.")
+    private List<String> proficiencies;
 
     @ManyToMany
-    @Size(max = 2)
-    private List<Spells> spells;
+    @Size(max = 2, message = "Choose up to 2 spells.")
+    private List<String> spells;
 
     public Character() {
     }
 
-    public Character(Alignment anAlignment, Background aBackground, ClassInfo aClass, Race aRace, List<Loadout> someLoadout, List<Proficiencies> someProficiencies, List<Spells> someSpells) {
+    public Character(String alignment, String aBackground, String aClass, String aRace, Loadout loadout, List<String> someProficiencies, List<String> someSpells) {
         super();
-        this.alignment = anAlignment;
+        this.alignment = alignment;
         this.background = aBackground;
         this.classInfo = aClass;
         this.race = aRace;
-        this.loadouts = someLoadout;
+        this.loadout = loadout;
         this.proficiencies = someProficiencies;
         this.spells = someSpells;
     }
 
-    // Getters and Setters
 
-
-    public Alignment getAlignment() {
+    public String getAlignment() {
         return alignment;
     }
 
-    public void setAlignment(Alignment alignment) {
+    public void setAlignment(String alignment) {
         this.alignment = alignment;
     }
 
-    public Background getBackground() {
-        return background;
-    }
-
-    public void setBackground(Background background) {
-        this.background = background;
-    }
-
-    public ClassInfo getClassInfo() {
+    public String getClassInfo() {
         return classInfo;
     }
 
-    public void setClassInfo(ClassInfo classInfo) {
+    public void setClassInfo(String classInfo) {
         this.classInfo = classInfo;
     }
 
-    public Race getRace() {
+    public String getRace() {
         return race;
     }
 
-    public void setRace(Race race) {
+    public void setRace(String race) {
         this.race = race;
     }
 
-    public List<Loadout> getEquipment() {
-        return loadouts;
+    public String getBackground() {
+        return background;
     }
 
-    public void setEquipment(List<Loadout> loadouts) {
-        this.loadouts = loadouts;
+    public void setBackground(String background) {
+        this.background = background;
     }
 
-    public List<Proficiencies> getProficiencies() {
+    public Loadout getLoadout() {
+        return loadout;
+    }
+
+    public void setLoadout(Loadout loadout) {
+        this.loadout = loadout;
+    }
+
+    public List<String> getProficiencies() {
         return proficiencies;
     }
 
-    public void setProficiencies(List<Proficiencies> proficiencies) {
+    public void setProficiencies(List<String> proficiencies) {
         this.proficiencies = proficiencies;
     }
 
-    public List<Spells> getSpells() {
+    public List<String> getSpells() {
         return spells;
     }
 
-    public void setSpells(List<Spells> spells) {
+    public void setSpells(List<String> spells) {
         this.spells = spells;
     }
 }
