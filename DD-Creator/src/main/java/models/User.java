@@ -4,8 +4,7 @@ package models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -23,6 +22,8 @@ public class User extends AbstractEntity {
 
     private String password;
 
+    private BCryptPasswordEncoder passwordEncoder;
+
     public User() {
     }
     public User(String username, String email, String password){
@@ -35,10 +36,10 @@ public class User extends AbstractEntity {
     }
 
     private String hashPassword(String password){
-        return new BCryptPasswordEncoder().encode(password);
+        return passwordEncoder.encode(password);
     }
     public boolean isMatchingPassword(String password){
-        return new BCryptPasswordEncoder().matches(password, this.password);
+        return passwordEncoder.matches(password, this.password);
     }
 
     //getters and setters for User field

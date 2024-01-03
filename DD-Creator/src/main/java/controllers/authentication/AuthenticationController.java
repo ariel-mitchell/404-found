@@ -61,7 +61,7 @@ public class AuthenticationController {
         }
         @GetMapping("/login")
         public String displayLoginForm(Model model, HttpSession session){
-            model.addAttribute(new RegisterFormDTO());
+            model.addAttribute(new LoginFormDTO());
             return "login";
         }
         @PostMapping("/login")
