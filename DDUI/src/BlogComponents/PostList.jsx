@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Post from './Post';
 
-function PostList() {
+function PostList () {
   // State for storing posts
 const [posts, setPosts] = useState([]);
 
@@ -26,9 +26,8 @@ return (
 <div>
     <h2>Posts</h2>
     <ul>
-        {Array.isArray(posts) && posts.map(post => (
-        <Post key={post.id} post={post} />
-        ))}
+        {Array.isArray(posts) && posts.map(post => 
+        <Post key={post.id} post={post} />)}
     </ul>
     </div>
 );

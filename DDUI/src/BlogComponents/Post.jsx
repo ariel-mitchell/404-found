@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './BlogStyling.css';
 
-// Post component to display a single blog post
 function Post({ post }) {
-    // Initialize state variables for likes, comments, and the new comment input
-    const [likes, setLikes] = useState(post.likes);
-    const [comments, setComments] = useState(post.comments);
-    const [newComment, setNewComment] = useState('');
+// Initialize state variables for likes, comments, and the new comment input
+const [likes, setLikes] = useState(post.likes);
+const [comments, setComments] = useState(post.comments);
+const [newComment, setNewComment] = useState('');
 
-    // Handle liking a post
-    const handleLike = async () => {
-        try {
-            // Make request to backend to update post likes
-            await axios.post(`http://localhost:8080/api/posts/${post.id}/like`);
-            // Update the local state with the new like count
-            setLikes(likes + 1);
-        } catch (error) {
-            console.error('Error liking post:', error);
-        }
-    };
+// Handle liking a post
+const handleLike = async () => {
+    try {
+    // Make request to backend to update post likes
+    await axios.post(`http://localhost:8080/api/posts/${post.id}/like`);
+    // Update the local state with the new like count
+    setLikes(likes + 1);
+    } catch (error) {
+    console.error('Error liking post:', error);
+    }
+};
 
     // Handle changes to the new comment input
     const handleCommentChange = (event) => {

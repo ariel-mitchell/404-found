@@ -29,6 +29,13 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL) // mappedBy refers to the field in Comment class
     private List<Comment> comments = new ArrayList<>();
 
+    private Post() {
+    }
+
+    public static Post createPost() {
+        return new Post();
+    }
+
     public List<Comment> getComments() {
         return comments;
     }

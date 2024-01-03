@@ -8,7 +8,7 @@ function App() {
 return (
     <div className="App">
     <h1>DnD Blog</h1>
-    <CreatePost />
+    
     </div>
 );
 }
