@@ -5,3 +5,6 @@ What is the purpose of this?
 How do we do this?
 By creating a user-friendly, easy to navigate website that allows users to 
 create characters, save them, and edit them.
+Pulls from D&D API and offers customizable character creation.
+Offers support to build profile and search through created characters.
+Uses reactJS, Java with Spring, Thymeleaf
