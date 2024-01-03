@@ -6,13 +6,19 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(
+        name = "post", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})}
+)
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Explicitly specify the ID generation strategy
     private Long id;
 
+    @Column(name = "title", nullable = false)
     private String title;
+    @Column(name = "content", nullable = false)
     private String content;
+    @Column(name = "author", nullable = false)
     private String author;
 
     @Temporal(TemporalType.TIMESTAMP) // Specify the temporal type for dateCreated
