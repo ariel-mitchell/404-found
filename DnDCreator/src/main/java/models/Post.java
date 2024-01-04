@@ -22,7 +22,6 @@ public class Post {
     private Date dateCreated;
 
     public Post() {
-        // Default constructor
     }
 
     public Post(String title, String content, String author) {
