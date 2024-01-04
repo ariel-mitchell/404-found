@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<p th:unless="${classes} and ${classes.size()}">No characters found!</p>
+
+<div>
+    <h2>Classes</h2>
+    <ul>
+        <li th:each="classInfo : ${classes}">
+            <a th:href="@{'/classes/view/' + ${classInfo.id}}" th:text="${classInfo.name}"></a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>

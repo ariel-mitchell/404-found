@@ -1,2 +1,4 @@
-package controllers;public class CategoryController {
+package controllers;
+
+public class CategoryController {
 }

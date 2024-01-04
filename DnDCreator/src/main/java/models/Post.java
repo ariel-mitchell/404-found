@@ -3,6 +3,7 @@ package models;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -10,9 +11,6 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    //@JoinColumn(name = "category_id")
-    private Category category;
     private String title;
     private String content;
     private String author;
@@ -20,12 +18,10 @@ public class Post {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
 
-    public Post(Category category) {
-        this.category = category;
-    }
 
-    public Post(Category category, String title, String content, String author) {
-        this.category = category;
+
+    public Post(String title, String content, String author) {
+
         this.title = title;
         this.content = content;
         this.author = author;
@@ -71,5 +67,9 @@ public class Post {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public List<Comment> getComments() {
+        return null;
     }
 }

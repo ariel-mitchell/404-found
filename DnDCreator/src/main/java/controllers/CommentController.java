@@ -1,2 +1,4 @@
-package controllers;public class CommentController {
+package controllers;
+
+public class CommentController {
 }

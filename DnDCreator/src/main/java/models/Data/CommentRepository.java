@@ -1,9 +1,9 @@
 package models.Data;
 
 import models.Comment;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CommentRepository extends JpaRepository<Comment, Long> {
+import org.springframework.data.repository.CrudRepository;
+
+public interface CommentRepository<C, L extends Number> extends CrudRepository<Comment, Long> {
 
 }
-

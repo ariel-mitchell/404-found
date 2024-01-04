@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}"></head>
+<body>
+
+<nav th:replace="~{fragments :: page-header}"></nav>
+
+<h1>Add Character</h1>
+
+<form>
+    <div>
+        <label th:for="name">Name</label>
+        <input class="form-control" th:field="${character.name}" />
+        <span th:errors="${character.name}" class="error"></span>
+    </div>
+
+    <div>
+        <label th:for="alignment">Alignment</label>
+        <select name="alignmentId">
+            <option th:each="alignment : ${alignments}"
+                    th:text="${alignment.name}"
+                    th:value="${alignment.id}"></option>
+        </select>
+        <a th:href="@{'/alignment/add'}">Add Alignment</a>
+    </div>
+
+    <div>
+        <label th:for="backgrounds">Backgrounds</label>
+        <th:block th:each="background : ${backgrounds}">
+            <input type="checkbox" name="backgrounds" th:value="${background.id}">
+            <label th:text="${background.name}"></label>
+        </th:block>
+        <a th:href="@{'/backgrounds/add'}">Add Background</a>
+    </div>
+
+    <div>
+        <label th:for="classes">Class</label>
+        <select name="classId">
+            <option th:each="class : ${classes}"
+                    th:text="${class.name}"
+                    th:value="${class.id}"></option>
+        </select>
+        <a th:href="@{'/classes/add'}">Add Class</a>
+    </div>
+
+    <div>
+        <label th:for="loadouts">Load-outs</label>
+        <th:block th:each="loadout : ${loadouts}">
+            <input type="checkbox" name="loadouts" th:value="${loadout.id}">
+            <label th:text="${loadout.name}"></label>
+        </th:block>
+        <a th:href="@{'/loadouts/add'}">Add Load-out</a>
+    </div>
+
+    <div>
+        <label th:for="proficiencies">Proficiencies</label>
+        <th:block th:each="proficiency : ${proficiencies}">
+            <input type="checkbox" name="proficiencies" th:value="${proficiency.id}">
+            <label th:text="${proficiency.name}"></label>
+        </th:block>
+        <a th:href="@{'/proficiencies/add'}">Add Load-out</a>
+    </div>
+
+    <div>
+        <label th:for="races">Races</label>
+        <select name="raceId">
+            <option th:each="race : ${races}"
+                    th:text="${race.name}"
+                    th:value="${race.id}"></option>
+        </select>
+        <a th:href="@{'/races/add'}">Add Class</a>
+    </div>
+
+    <div>
+        <label th:for="spells">Spells</label>
+        <th:block th:each="spell : ${spells}">
+            <input type="checkbox" name="spells" th:value="${spell.id}">
+            <label th:text="${spell.name}"></label>
+        </th:block>
+        <a th:href="@{'/spells/add'}">Add Load-out</a>
+    </div>
+
+    <input type="submit" value="Add Character" />
+</form>
+
+</body>
+</html>

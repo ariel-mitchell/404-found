@@ -9,7 +9,7 @@ public class Comment {
     private Long id;
 
     @ManyToOne
-    //@JoinColumn(name = "post_id")
+    @JoinColumn(name = "post_id")
     private Post post;
 
     private String content;

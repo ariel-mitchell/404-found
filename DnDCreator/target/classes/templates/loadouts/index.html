@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<p th:unless="${loadouts} and ${loadouts.size()}">No characters found!</p>
+
+<div>
+    <h2>Equipment</h2>
+    <ul>
+        <li th:each="loadout : ${loadouts}">
+            <a th:href="@{'/loadouts/view/' + ${loadout.id}}" th:text="${loadout.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/loadouts/add;}">Add Equipment to Load-out</a>
+
+</div>
+
+</body>
+</html>
