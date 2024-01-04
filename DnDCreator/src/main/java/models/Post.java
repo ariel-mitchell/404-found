@@ -1,11 +1,7 @@
 package models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
+
 import java.util.Date;
 
 @Entity
@@ -14,6 +10,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    //@JoinColumn(name = "category_id")
+    private Category category;
     private String title;
     private String content;
     private String author;
@@ -21,10 +20,12 @@ public class Post {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
 
-    public Post() {
+    public Post(Category category) {
+        this.category = category;
     }
 
-    public Post(String title, String content, String author) {
+    public Post(Category category, String title, String content, String author) {
+        this.category = category;
         this.title = title;
         this.content = content;
         this.author = author;
