@@ -4,20 +4,35 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import java.util.Date;
 
 @Entity
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
     private String content;
     private String author;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
 
+    public Post() {
+        // Default constructor
+    }
+
+    public Post(String title, String content, String author) {
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.dateCreated = new Date(); // Assuming current date/time on creation
+    }
+
+    // Getters and Setters for all fields
     public Long getId() {
         return id;
     }
