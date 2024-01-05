@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments :: head}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: page-header}"></div>
+
+<p th:unless="${races} and ${races.size()}">No characters found!</p>
+
+<div>
+    <h2>Races</h2>
+    <ul>
+        <li th:each="race : ${races}">
+            <a th:href="@{'/races/view/' + ${race.id}}" th:text="${race.name}"></a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>

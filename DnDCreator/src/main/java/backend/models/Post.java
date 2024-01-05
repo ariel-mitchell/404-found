@@ -1,29 +1,53 @@
 package backend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
+@Table(name = "posts")
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long postId;
 
     private String title;
     private String content;
+    @Column(name = "authorId")
+    private Long authorId;
+
+    @Transient //This field is not persistent in DB
     private String author;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
 
-    public Long getId() {
-        return id;
+    private long views;
+    private long likes;
+    private long comments;
+
+    //Constructor
+    public Post() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Post(String title, String content, Long authorId, String author, Date dateCreated, Long views, Long likes, Long comments) {
+        this.title = title;
+        this.content = content;
+        this.authorId = authorId;
+        this.author = author;
+        this.dateCreated = dateCreated;
+        this.views = views;
+        this.likes = likes;
+        this.comments = comments;
+    }
+
+    // Getters and Setters for all fields
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 
     public String getTitle() {
@@ -42,6 +66,14 @@ public class Post {
         this.content = content;
     }
 
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -56,5 +88,44 @@ public class Post {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public long getViews() {
+        return views;
+    }
+
+    public void setViews(long views) {
+        this.views = views;
+    }
+
+    public long getLikes() {
+        return likes;
+    }
+
+    public void setLikes(long likes) {
+        this.likes = likes;
+    }
+
+    public long getComments(){
+        return comments;
+    }
+    public void setComments(long comments) {
+        this.comments = comments;
+    }
+
+    //toString method
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postId=" + postId +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", authorId=" + authorId +
+                ", authorName='" + author + '\'' +
+                ", dateCreated='" + dateCreated +
+                ", views=" + views +
+                ", likes=" + likes +
+                ", comments=" + comments +
+                '}';
     }
 }
