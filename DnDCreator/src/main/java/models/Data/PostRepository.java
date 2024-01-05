@@ -10,5 +10,6 @@ import java.util.List;
 // interface for handling Post entity in database
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
+
     List<Post> findByKeyword(String keyword);
 }
