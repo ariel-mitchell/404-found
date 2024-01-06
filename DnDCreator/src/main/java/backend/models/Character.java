@@ -7,7 +7,10 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,26 +21,34 @@ import java.lang.String;
 public class Character extends AbstractEntity{
 
     @ManyToMany(mappedBy = "characters")
+    @Autowired
     private List<Character> characters = new ArrayList<>();
 
     @NotBlank
+    @Autowired
     private String alignment;
     @NotBlank
+    @Autowired
     private String classInfo;
     @NotBlank
+    @Autowired
     private String race;
 
     @NotBlank(message = "Enter a custom background")
     @Size(max = 1000)
+    @Autowired
     private String background;
 
-    @ManyToMany
+    @ManyToOne
+    @Autowired
     private Loadout loadout;
 
     @Size(max = 2, message = "Choose up to 2 proficiencies.")
+    @Autowired
     private List<String> proficiencies;
 
     @Size(max = 2, message = "Choose up to 2 spells.")
+    @Autowired
     private List<String> spells;
 
     public Character() {
@@ -53,7 +64,6 @@ public class Character extends AbstractEntity{
         this.proficiencies = someProficiencies;
         this.spells = someSpells;
     }
-
 
     public String getAlignment() {
         return alignment;

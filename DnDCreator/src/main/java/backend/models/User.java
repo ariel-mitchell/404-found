@@ -17,15 +17,12 @@ public class User extends AbstractEntity {
 
 
     private String username;
-
     private String email;
-
     private String password;
-
     private BCryptPasswordEncoder passwordEncoder;
 
-    public User() {
-    }
+    public User() {}
+
     public User(String username, String email, String password){
         this.username = username;
         this.email = email;

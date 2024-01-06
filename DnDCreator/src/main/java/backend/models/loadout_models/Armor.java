@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class Armor extends AbstractEntity {
 
-    @ManyToMany(mappedBy = "armor_id")
+    @ManyToMany
     private List<Loadout> loadouts = new ArrayList<>();
 
     public Armor () {

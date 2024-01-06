@@ -1,10 +1,11 @@
 package backend.models.Data;
 
 import backend.models.Character;
-import jakarta.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Transactional
-public interface CharacterRepository extends CrudRepository<Character, Integer> {}
+public interface CharacterRepository extends CrudRepository<Character, Integer> { }

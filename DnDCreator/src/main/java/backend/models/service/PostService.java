@@ -43,7 +43,7 @@ public class PostService {
         // Update fields
         existingPost.setTitle(updatedPost.getTitle());
         existingPost.setContent(updatedPost.getContent());
-        existingPost.setAuthor(updatedPost.getAuthor());
+        existingPost.setUser(updatedPost.getUser());
 
         // Save and return updated post
         return postRepository.save(existingPost);

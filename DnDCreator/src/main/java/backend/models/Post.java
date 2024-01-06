@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,27 +12,26 @@ public class Post {
 
     private String title;
     private String content;
-    @Column(name = "authorId")
-    private Long authorId;
+    private Integer userId;
 
     @Transient //This field is not persistent in DB
-    private String author;
+    private User user;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreated;
 
-    private long views;
-    private long likes;
-    private long comments;
+    private int views;
+    private int likes;
+    private int comments;
 
     //Constructor
     public Post() {
     }
 
-    public Post(String title, String content, Long authorId, String author, Date dateCreated, Long views, Long likes, Long comments) {
+    public Post(String title, String content, int userId, User user, Date dateCreated, int views, int likes, int comments) {
         this.title = title;
         this.content = content;
-        this.authorId = authorId;
-        this.author = author;
+        this.userId = userId;
+        this.user = user;
         this.dateCreated = dateCreated;
         this.views = views;
         this.likes = likes;
@@ -66,20 +64,20 @@ public class Post {
         this.content = content;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getAuthor() {
-        return author;
+    public User getUser() {
+        return user;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getDateCreated() {
@@ -94,7 +92,7 @@ public class Post {
         return views;
     }
 
-    public void setViews(long views) {
+    public void setViews(int views) {
         this.views = views;
     }
 
@@ -102,14 +100,14 @@ public class Post {
         return likes;
     }
 
-    public void setLikes(long likes) {
+    public void setLikes(int likes) {
         this.likes = likes;
     }
 
     public long getComments(){
         return comments;
     }
-    public void setComments(long comments) {
+    public void setComments(int comments) {
         this.comments = comments;
     }
 
@@ -120,8 +118,8 @@ public class Post {
                 "postId=" + postId +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", authorId=" + authorId +
-                ", authorName='" + author + '\'' +
+                ", userId=" + userId +
+                ", user='" + user + '\'' +
                 ", dateCreated='" + dateCreated +
                 ", views=" + views +
                 ", likes=" + likes +

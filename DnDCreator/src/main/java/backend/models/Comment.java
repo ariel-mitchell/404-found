@@ -1,6 +1,7 @@
 package backend.models;
 
 import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Entity
 public class Comment {
@@ -8,8 +9,6 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Explicitly specify the ID generation strategy
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
     private Post post;
 
     private String content;
