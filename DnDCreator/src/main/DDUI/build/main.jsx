@@ -1,10 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.jsx';
-import './index.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './Home.jsx';
+import SpellList from './SpellList.jsx';
+import './App.css';
+import './Styles.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-<React.StrictMode>
-    <App />
-</React.StrictMode>,
+function Main() {
+return (
+    <Router>
+    <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/spells" component={SpellList} />
+        {/* Define more routes/components */}
+    </Switch>
+    </Router>
 );
+}
+
+export default Main;
