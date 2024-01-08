@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAllSpells } from './api';
 import SpellCard from './SpellCard';
-import AddSpellsForm from './SpellsComponents';
+
 import './styles.css';
 
 

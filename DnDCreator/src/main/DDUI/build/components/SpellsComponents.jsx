@@ -48,4 +48,4 @@ const AddSpellsForm = ({ onAddSpell }) => {
   );
 };
 
-export default SpellComponents;
+export default AddSpellsForms;
