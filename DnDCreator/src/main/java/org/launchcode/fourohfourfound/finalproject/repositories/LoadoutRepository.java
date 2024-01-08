@@ -1,6 +1,6 @@
 package org.launchcode.fourohfourfound.finalproject.repositories;
 
-import models.Loadout;
+import org.launchcode.fourohfourfound.finalproject.models.Loadout;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

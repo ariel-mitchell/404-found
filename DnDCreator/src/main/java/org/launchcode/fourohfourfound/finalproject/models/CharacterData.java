@@ -1,4 +1,4 @@
-package models;
+package org.launchcode.fourohfourfound.finalproject.models;
 
 import java.util.ArrayList;
 

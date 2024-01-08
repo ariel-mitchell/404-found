@@ -1,7 +1,7 @@
-package controllers;
+package org.launchcode.fourohfourfound.finalproject.controllers;
 
-import models.Character;
-import models.CharacterData;
+import org.launchcode.fourohfourfound.finalproject.models.Character;
+import org.launchcode.fourohfourfound.finalproject.models.CharacterData;
 import org.launchcode.fourohfourfound.finalproject.repositories.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static controllers.ListController.characteristicChoices;
+import static org.launchcode.fourohfourfound.finalproject.controllers.ListController.characteristicChoices;
 
 
 @Controller

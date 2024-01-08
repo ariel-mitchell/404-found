@@ -1,8 +1,8 @@
-package controllers;
+package org.launchcode.fourohfourfound.finalproject.controllers;
 
 import jakarta.validation.Valid;
 import org.launchcode.fourohfourfound.finalproject.repositories.LoadoutRepository;
-import models.Loadout;
+import org.launchcode.fourohfourfound.finalproject.models.Loadout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;

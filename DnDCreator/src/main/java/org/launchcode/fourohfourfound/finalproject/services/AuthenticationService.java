@@ -1,6 +1,6 @@
 package org.launchcode.fourohfourfound.finalproject.services;
 
-import models.User;
+import org.launchcode.fourohfourfound.finalproject.models.User;
 import org.launchcode.fourohfourfound.finalproject.repositories.UserRepository;
 import org.launchcode.fourohfourfound.finalproject.dtos.LoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;

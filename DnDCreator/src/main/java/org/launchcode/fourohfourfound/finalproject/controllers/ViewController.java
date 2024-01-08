@@ -1,4 +1,4 @@
-package controllers;
+package org.launchcode.fourohfourfound.finalproject.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

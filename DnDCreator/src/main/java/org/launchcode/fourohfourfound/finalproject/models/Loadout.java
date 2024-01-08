@@ -1,10 +1,10 @@
-package models;
+package org.launchcode.fourohfourfound.finalproject.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
-import models.loadout_models.*;
+import org.launchcode.fourohfourfound.finalproject.models.loadout_models.*;
 
 import java.util.ArrayList;
 import java.util.List;

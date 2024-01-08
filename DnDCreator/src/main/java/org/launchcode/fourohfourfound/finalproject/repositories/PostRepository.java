@@ -1,7 +1,7 @@
 package org.launchcode.fourohfourfound.finalproject.repositories;
 
 
-import models.Post;
+import org.launchcode.fourohfourfound.finalproject.models.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

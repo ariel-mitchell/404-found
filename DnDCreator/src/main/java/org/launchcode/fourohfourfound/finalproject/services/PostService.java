@@ -1,7 +1,7 @@
 package org.launchcode.fourohfourfound.finalproject.services;
 
 
-import models.Post;
+import org.launchcode.fourohfourfound.finalproject.models.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

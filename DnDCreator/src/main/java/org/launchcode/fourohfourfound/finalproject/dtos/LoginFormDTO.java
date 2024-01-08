@@ -3,6 +3,7 @@ package org.launchcode.fourohfourfound.finalproject.dtos;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+
 public class LoginFormDTO {
     @NotNull(message = "Username is required.")
     @NotBlank(message = "Username is required.")

@@ -1,4 +1,4 @@
-package models;
+package org.launchcode.fourohfourfound.finalproject.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

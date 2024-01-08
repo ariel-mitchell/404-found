@@ -1,6 +1,7 @@
 package org.launchcode.fourohfourfound.finalproject.services;
 
-import models.*;
+import org.launchcode.fourohfourfound.finalproject.dtos.RegisterFormDTO;
+import org.launchcode.fourohfourfound.finalproject.models.*;
 
 import java.util.List;
 

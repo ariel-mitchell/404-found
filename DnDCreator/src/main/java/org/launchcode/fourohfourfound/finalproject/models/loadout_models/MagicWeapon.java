@@ -1,9 +1,9 @@
-package models.loadout_models;
+package org.launchcode.fourohfourfound.finalproject.models.loadout_models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
-import models.AbstractEntity;
-import models.Loadout;
+import org.launchcode.fourohfourfound.finalproject.models.AbstractEntity;
+import org.launchcode.fourohfourfound.finalproject.models.Loadout;
 
 import java.util.ArrayList;
 import java.util.List;

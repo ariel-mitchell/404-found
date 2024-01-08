@@ -1,8 +1,8 @@
-package controllers;
+package org.launchcode.fourohfourfound.finalproject.controllers;
 
-import models.Character;
-import models.*;
-import models.Data.*;
+import org.launchcode.fourohfourfound.finalproject.models.Character;
+import org.launchcode.fourohfourfound.finalproject.models.*;
+import org.launchcode.fourohfourfound.finalproject.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

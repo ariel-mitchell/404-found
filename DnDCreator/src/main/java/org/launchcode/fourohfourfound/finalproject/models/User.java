@@ -1,13 +1,11 @@
-package models;
-
-
+package org.launchcode.fourohfourfound.finalproject.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Entity
@@ -23,10 +21,9 @@ public class User extends AbstractEntity {
 
     private String password;
 
-    private BCryptPasswordEncoder passwordEncoder;
-
     public User() {
     }
+
     public User(String username, String email, String password){
         this.username = username;
         this.email = email;
@@ -34,12 +31,14 @@ public class User extends AbstractEntity {
     }
 
     public User(String username, String password) {
-    }
+     }
 
-    private String hashPassword(String password){
+    private String hashPassword(String password) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.encode(password);
     }
-    public boolean isMatchingPassword(String password){
+    public boolean isMatchingPassword(String password) {
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.matches(password, this.password);
     }
 

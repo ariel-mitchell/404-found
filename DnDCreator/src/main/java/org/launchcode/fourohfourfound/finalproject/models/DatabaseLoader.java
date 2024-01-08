@@ -1,11 +1,9 @@
-package models;
+package org.launchcode.fourohfourfound.finalproject.models;
 
-import models.loadout_models.*;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import org.launchcode.fourohfourfound.finalproject.repositories.CharacterRepository;
-import org.launchcode.fourohfourfound.finalproject.repositories.LoadoutRepository;
-import models.loadout_models.Weapon;
+import org.launchcode.fourohfourfound.finalproject.models.loadout_models.*;
+import org.launchcode.fourohfourfound.finalproject.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
