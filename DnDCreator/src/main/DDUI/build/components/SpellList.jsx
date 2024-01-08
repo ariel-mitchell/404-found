@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getAllSpells } from './api';
 import SpellCard from './SpellCard';
 
-import './styles.css';
-
 
 function SpellList() {
 const [spells, setSpells] = useState([]);
