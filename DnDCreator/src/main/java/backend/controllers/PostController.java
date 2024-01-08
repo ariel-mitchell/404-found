@@ -2,7 +2,7 @@ package backend.controllers;
 
 import backend.models.Comment;
 import backend.models.Post;
-import backend.models.service.PostService;
+import backend.config.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

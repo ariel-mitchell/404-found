@@ -1,4 +1,4 @@
-package backend.models.service;
+package backend.config.service;
 
 import backend.models.Post;
 import backend.models.Comment;
@@ -38,7 +38,7 @@ public class PostService {
     // Update Post
     public Post updatePost(Long id, Post updatedPost) {
         Post existingPost = postRepository.findById(id)
-                .orElseThrow(() -> new backend.models.service.PostNotFoundException("Post not found with id: " + id));
+                .orElseThrow(() -> new PostNotFoundException("Post not found with id: " + id));
 
         // Update fields
         existingPost.setTitle(updatedPost.getTitle());

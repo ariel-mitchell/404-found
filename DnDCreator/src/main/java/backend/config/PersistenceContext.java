@@ -3,10 +3,12 @@ package backend.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.EntityManagerFactory;
-import org.springframework.core.env.Environment;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -18,21 +20,21 @@ import java.util.Properties;
 
 @Configuration
 @EnableJpaAuditing(dateTimeProviderRef = "dateTimeProvider")
-@EnableJpaRepositories(basePackages = "DndCreator")
-@ComponentScan("demo")
+@EnableJpaRepositories(basePackages = "backend.models.data")
+@ComponentScan("backend")
 public class PersistenceContext {
     private static final String[] ENTITY_PACKAGES = {"DndCreator"};
 
     private static final String PROPERTY_NAME_DB_DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
     private static final String PROPERTY_NAME_DB_PASSWORD = "dnduser";
-    private static final String PROPERTY_NAME_DB_URL = "jdbc:mysql://localhost:3306/dndcreator?useSSL=false&serverTimezone=UTC";
+    private static final String PROPERTY_NAME_DB_URL = "jdbc:mysql://localhost:3306/dndcreator";
     private static final String PROPERTY_NAME_DB_USER = "dnduser";
-    private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
+    private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "org.hibernate.dialect.MySQLDialect";
     private static final String PROPERTY_NAME_HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
     private static final String PROPERTY_NAME_HIBERNATE_NAMING_STRATEGY = "hibernate.ejb.naming_strategy";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
-
+    public static final Environment env1 = DDCreator.getEnvironment();
     /*@Bean
     AuditorAware<String> auditorProvider() {
         return new UsernameAuditorAware();
@@ -43,30 +45,26 @@ public class PersistenceContext {
         return new AuditingDateTimeProvider(dateTimeService);
     }*/
 
+
+
     @Bean(destroyMethod = "close")
     DataSource dataSource(Environment env) {
         HikariConfig dataSourceConfig = new HikariConfig();
-        dataSourceConfig.setDriverClassName(env.getRequiredProperty("com.mysql.cj.jdbc.Driver"));
-        dataSourceConfig.setJdbcUrl(env.getRequiredProperty("jdbc:mysql://localhost:3306/dndcreator?useSSL=false&serverTimezone=UTC"));
-        dataSourceConfig.setUsername(env.getRequiredProperty("dnduser"));
-        dataSourceConfig.setPassword(env.getRequiredProperty("dnduser"));
+        dataSourceConfig.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DB_DRIVER_CLASS));
+        dataSourceConfig.setJdbcUrl(env.getRequiredProperty(PROPERTY_NAME_DB_URL));
+        dataSourceConfig.setUsername(env.getRequiredProperty(PROPERTY_NAME_DB_USER));
+        dataSourceConfig.setPassword(env.getRequiredProperty(PROPERTY_NAME_DB_PASSWORD));
 
         return new HikariDataSource(dataSourceConfig);
     }
 
-    /**
-     * Creates the bean that creates the JPA entity manager factory.
-     * @param dataSource    The datasource that provides the database connections.
-     * @param env           The runtime environment of  our application.
-     * @return
-     */
 
     @Bean
     LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment env) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("backend");
+        entityManagerFactoryBean.setPackagesToScan("backend.models.data");
 
         Properties jpaProperties = new Properties();
 
@@ -81,12 +79,6 @@ public class PersistenceContext {
         return entityManagerFactoryBean;
     }
 
-    /**
-     * Creates the transaction manager bean that integrates the used JPA provider with the
-     * Spring transaction mechanism.
-     * @param entityManagerFactory  The used JPA entity manager factory.
-     * @return
-     */
     @Bean
     JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

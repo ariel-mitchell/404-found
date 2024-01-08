@@ -6,14 +6,15 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import backend.models.User;
 import backend.models.Data.UserRepository;
-import backend.models.dto.LoginFormDTO;
-import backend.models.dto.RegisterFormDTO;
+import backend.config.dto.LoginFormDTO;
+import backend.config.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import backend.config.service.*;
 
 public class AuthenticationController {
     @Autowired
@@ -46,7 +47,7 @@ public class AuthenticationController {
             model.addAttribute("verifyError", "Passwords do not match");
             return "register";
         }
-        if (userRepository.findByUsername(registerFormDTO.getUsername()) != null) {
+        if (userRepository.findByUsername() != null) {
             model.addAttribute("usernameError", "Username already exists");
             return "register";
         }
@@ -70,7 +71,7 @@ public class AuthenticationController {
         if(errors.hasErrors()) {
             return "login";
         }
-        User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
+        User theUser = userRepository.findByUsername();
         if (theUser == null) {
             model.addAttribute("usernameError", "Username does not exist");
             return "login";

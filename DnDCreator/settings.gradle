@@ -1,1 +1,5 @@
 rootProject.name = 'demo'
+
+dependencyResolutionManagement {
+    repositoriesMode = RepositoriesMode.PREFER_PROJECT
+}

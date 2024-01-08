@@ -1,6 +1,6 @@
 package backend;
 
-import backend.UserDao.UserDao;
+import backend.config.UserDao.UserDao;
 
 public class LoginUserWithSql {
 

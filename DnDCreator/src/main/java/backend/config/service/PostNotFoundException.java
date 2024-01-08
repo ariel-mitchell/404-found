@@ -1,4 +1,4 @@
-package backend.models.service;
+package backend.config.service;
 
 public class PostNotFoundException extends RuntimeException {
     public PostNotFoundException(String message) {

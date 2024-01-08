@@ -1,4 +1,4 @@
-package backend.models.service;
+package backend.config.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

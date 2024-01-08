@@ -4,15 +4,17 @@ import jakarta.servlet.FilterRegistration;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRegistration;
-import org.springframework.boot.web.servlet.DispatcherType;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
+import jakarta.servlet.DispatcherType;
 
 import java.util.EnumSet;
+
+import static jakarta.servlet.DispatcherType.*;
 
 public class WebAppConfig implements WebApplicationInitializer {
     private static final String CHARACTER_ENCODING_FILTER_ENCODING = "UTF-8";
@@ -31,12 +33,13 @@ public class WebAppConfig implements WebApplicationInitializer {
         //rootContext.setConfigLocation("classpath:applicationContext.xml");
 
         configureDispatcherServlet(servletContext, rootContext);
-        EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
+        EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(REQUEST, ERROR, ASYNC);
 
         configureCharacterEncodingFilter(servletContext, dispatcherTypes);
         configureSpringSecurityFilter(servletContext, dispatcherTypes);
         servletContext.addListener(new ContextLoaderListener(rootContext));
     }
+
 
     private void configureDispatcherServlet(ServletContext servletContext, AnnotationConfigWebApplicationContext rootContext) {
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet(
@@ -52,6 +55,7 @@ public class WebAppConfig implements WebApplicationInitializer {
         characterEncodingFilter.setEncoding(CHARACTER_ENCODING_FILTER_ENCODING);
         characterEncodingFilter.setForceEncoding(true);
         FilterRegistration.Dynamic characterEncoding = servletContext.addFilter(CHARACTER_ENCODING_FILTER_NAME, characterEncodingFilter);
+        characterEncoding.setAsyncSupported(true);
         characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, CHARACTER_ENCODING_FILTER_URL_PATTERN);
     }
 

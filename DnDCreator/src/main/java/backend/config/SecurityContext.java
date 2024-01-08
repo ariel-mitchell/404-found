@@ -31,9 +31,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 import javax.sql.DataSource;
 import java.util.LinkedHashMap;
 
-/**
- * @author Petri Kainulainen
- */
+
 @Configuration
 @EnableWebSecurity
 class SecurityContext {

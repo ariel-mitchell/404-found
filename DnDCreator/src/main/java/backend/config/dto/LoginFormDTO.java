@@ -1,4 +1,4 @@
-package backend.models.dto;
+package backend.config.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
