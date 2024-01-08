@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './Main.jsx'; // Import your Main component
+import Main from './Main.jsx';
 
 const rootElement = document.getElementById('root');
 

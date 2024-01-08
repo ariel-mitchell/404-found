@@ -1,19 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './Home.jsx';
-import SpellList from './SpellList.jsx';
 import './App.css';
-import './Styles.css';
+import './styles.css';
+import App from './App.jsx'; 
 
 function Main() {
 return (
-    <Router>
-    <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/spells" component={SpellList} />
-        {/* Define more routes/components */}
-    </Switch>
-    </Router>
+    <div>
+      {/* Other components or layout can go here Blog? */}
+    <App />
+    </div>
 );
 }
 

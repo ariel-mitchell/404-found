@@ -1,53 +1,51 @@
 import React, { useState } from 'react';
 
-const AddSpellsForm = () => {
-  // Define state for spell and spells
-const [spell, setSpell] = useState({ name: '', spells: '' });
+const AddSpellsForm = ({ onAddSpell }) => {
+  const [spell, setSpell] = useState({ name: '', spells: '' });
 
-  // Handle form submission
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Add logic here to handle form submission, e.g., API calls
-    console.log('Submitted:', spell);
-};
+    // Call the onAddSpell function with the new spell data
+    onAddSpell(spell);
+    // Clear the form fields after submission
+    setSpell({ name: '', spells: '' });
+  };
 
-  // Handle input changes
-const handleInputChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSpell({ ...spell, [name]: value });
-};
+  };
 
-return (
+  return (
     <div>
-    <h1>Add Spells</h1>
-
-    <form onSubmit={handleSubmit}>
+      <h2>Add Spell</h2>
+      <form onSubmit={handleSubmit}>
         <div>
-        <label htmlFor="name">Spell Name</label>
-        <input
-            type="text"
-            id="name"
-            name="name"
+          <label htmlFor='name'>Spell Name</label>
+          <input
+            type='text'
+            id='name'
+            name='name'
             value={spell.name}
             onChange={handleInputChange}
-        />
+          />
         </div>
 
         <div>
-        <label htmlFor="spells">Spells</label>
-        <input
-            type="text"
-            id="spells"
-            name="spells"
+          <label htmlFor='spells'>Spells</label>
+          <input
+            type='text'
+            id='spells'
+            name='spells'
             value={spell.spells}
             onChange={handleInputChange}
-        />
+          />
         </div>
 
-        <input type="submit" value="Add Spell" />
-    </form>
+        <input type='submit' value='Add Spell' />
+      </form>
     </div>
-);
+  );
 };
 
 export default AddSpellsForm;
