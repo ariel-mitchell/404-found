@@ -1,15 +1,14 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
-import './styles.css';
-import App from './App.jsx'; 
+import './Styles.css';
+import App from './App.jsx';
 
-function Main() {
-return (
-    <div>
-      {/* Other components or layout can go here Blog? */}
+const rootElement = document.getElementById('root');
+
+ReactDOM.render(
+<React.StrictMode>
     <App />
-    </div>
+</React.StrictMode>,
+rootElement
 );
-}
-
-export default Main;
