@@ -1,13 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+
+import React from 'react';
+import "styles.css";
 
 function Home() {
 return (
-    <div>
-    <h1>Home</h1>
-    <Link to="/spells">View Spells</Link>
+    <div className="container">
+    <div className="card">
+        <h1>Home</h1>
+        {/* Other content */}
     </div>
-    );
+    </div>
+);
 }
 
 export default Home;
