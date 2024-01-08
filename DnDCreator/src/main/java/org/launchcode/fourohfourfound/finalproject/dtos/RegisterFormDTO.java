@@ -1,4 +1,4 @@
-package models.dto;
+package org.launchcode.fourohfourfound.finalproject.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

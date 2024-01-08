@@ -1,11 +1,11 @@
-package models.service;
+package org.launchcode.fourohfourfound.finalproject.services;
 
 
 import models.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import models.Data.PostRepository;
+import org.launchcode.fourohfourfound.finalproject.repositories.PostRepository;
 import java.util.List;
 
 //Service for managing operations related to Post entity

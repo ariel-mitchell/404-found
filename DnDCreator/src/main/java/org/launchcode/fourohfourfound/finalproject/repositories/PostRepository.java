@@ -1,4 +1,4 @@
-package models.Data;
+package org.launchcode.fourohfourfound.finalproject.repositories;
 
 
 import models.Post;

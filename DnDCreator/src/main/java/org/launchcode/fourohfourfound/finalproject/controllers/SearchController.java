@@ -2,7 +2,7 @@ package controllers;
 
 import models.Character;
 import models.CharacterData;
-import models.Data.CharacterRepository;
+import org.launchcode.fourohfourfound.finalproject.repositories.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

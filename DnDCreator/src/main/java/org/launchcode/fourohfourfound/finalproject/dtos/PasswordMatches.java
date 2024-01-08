@@ -1,2 +1,2 @@
-package models.dto;public interface PasswordMatches {
+package org.launchcode.fourohfourfound.finalproject.dtos;public interface PasswordMatches {
 }

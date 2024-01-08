@@ -1,2 +1,2 @@
-package models.dto;public class PasswordMatchesValidator {
+package org.launchcode.fourohfourfound.finalproject.dtos;public class PasswordMatchesValidator {
 }

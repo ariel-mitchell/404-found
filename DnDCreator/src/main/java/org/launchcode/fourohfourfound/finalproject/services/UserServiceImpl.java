@@ -1,2 +1,2 @@
-package models.service;public class UserServiceImpl {
+package org.launchcode.fourohfourfound.finalproject.services;public class UserServiceImpl {
 }

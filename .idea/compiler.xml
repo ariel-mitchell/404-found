@@ -9,8 +9,5 @@
         <module name="DndCreator" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="demo" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

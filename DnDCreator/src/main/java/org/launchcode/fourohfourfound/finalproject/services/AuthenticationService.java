@@ -1,8 +1,8 @@
-package models.service;
+package org.launchcode.fourohfourfound.finalproject.services;
 
 import models.User;
-import models.Data.UserRepository;
-import models.dto.LoginFormDTO;
+import org.launchcode.fourohfourfound.finalproject.repositories.UserRepository;
+import org.launchcode.fourohfourfound.finalproject.dtos.LoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
