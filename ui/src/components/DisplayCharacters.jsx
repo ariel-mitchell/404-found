@@ -73,12 +73,16 @@ export default function DisplayCharacters({}) {
     <div className="title">
       <h1>User's Characters</h1>
       <img src="./dnd-5e-spells-wizard.webp" class="center" />
+      <br />
+      <hr />
+      <h1><u><strong>Your Characters are grouped by block. You can edit, update, or delete them below!</strong></u></h1>
       <div className="character-grid">
+        <ul>
         {characters.map((character, index) => (
           <div key={index} className="character">
             <p>
             <button onClick={() => deleteCharacter(character.id)}>Delete</button>
-              Name:
+              <li>Name:
               {editingField === "characterName" &&
               character.id === characterDetails.id ? ( // ternary conditonal to check if the field is being edited and if the character id matches the character id of the character being edited
                 <input
@@ -106,8 +110,9 @@ export default function DisplayCharacters({}) {
                   </button>
                 </>
               )}
+              </li>
             </p>
-            <p>
+            <li><p>
               Class:
               {editingField === "characterClass" &&
               character.id === characterDetails.id ? (
@@ -135,7 +140,8 @@ export default function DisplayCharacters({}) {
                 </>
               )}
             </p>
-            <p>
+            </li>
+            <li><p>
               Race:
               {editingField === "race" &&
               character.id === characterDetails.id ? (
@@ -162,7 +168,8 @@ export default function DisplayCharacters({}) {
                 </>
               )}
             </p>
-            <p>
+            </li>
+            <li><p>
               Alignment:
               {editingField === "alignment" &&
               character.id === characterDetails.id ? (
@@ -189,7 +196,8 @@ export default function DisplayCharacters({}) {
                 </>
               )}
             </p>
-            <p>
+            </li>
+            <li><p>
               Background:
               {editingField === "background" &&
               character.id === characterDetails.id ? (
@@ -216,7 +224,8 @@ export default function DisplayCharacters({}) {
                 </>
               )}
             </p>
-            <p>
+            </li>
+            <li><p>
               Armor:
               {editingField === "armorChoice" &&
               character.id === characterDetails.id ? (
@@ -243,6 +252,8 @@ export default function DisplayCharacters({}) {
                 </>
               )}
             </p>
+            </li>
+            <li>
             Magic Armor:
             {editingField === "magicArmor" &&
             character.id === characterDetails.id ? (
@@ -268,6 +279,8 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
+            <li>
             Weapon:
             {editingField === "weapon" &&
             character.id === characterDetails.id ? (
@@ -293,6 +306,8 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
+            <li>
             Magic Weapon:
             {editingField === "magicWeapon" &&
             character.id === characterDetails.id ? (
@@ -318,6 +333,8 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
+            <li>
             Equipment:
             {editingField === "equipment" &&
             character.id === characterDetails.id ? (
@@ -343,6 +360,8 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
+            <li>
             Treasure:
             {editingField === "treasure" &&
             character.id === characterDetails.id ? (
@@ -368,6 +387,8 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
+            <li>
             First Proficiency:
             {editingField === "proficiencyOne" &&
             character.id === characterDetails.id ? (
@@ -393,6 +414,8 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
+            <li>
             Second Proficiency:
             {editingField === "proficiencyTwo" &&
             character.id === characterDetails.id ? (
@@ -418,6 +441,8 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
+            <li>
             First Spell:
             {editingField === "spellOne" &&
             character.id === characterDetails.id ? (
@@ -443,6 +468,8 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
+            <li>
             Second Spell:
             {editingField === "spellTwo" &&
             character.id === characterDetails.id ? (
@@ -468,8 +495,10 @@ export default function DisplayCharacters({}) {
                 </button>
               </>
             )}
+            </li>
           </div>
         ))}
+        </ul>
       </div>
     </div>
   );

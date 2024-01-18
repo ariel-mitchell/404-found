@@ -6,18 +6,20 @@
   display: grid;
 }
 .character-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* creates a 3-column grid */
-  gap: 20px; /* adds some space between the grid items */
+  display: inline-block;
+  width: 100%;
+  row-gap: 10px;
+  column-gap: 30px;
 }
 
 .character {
-  margin: 10px;
+  text-align: center;
+  margin: 10x;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  flex-wrap: wrap;
-  display: flex;
+  flex-wrap:wrap;
+  display: inline-block;
 }
 
 .character h2 {
@@ -27,7 +29,8 @@
 }
 
 .edit-button {
-  margin-left: 10px;
+  display: inline-block;
+  padding: 15px;
 }
 .edit-button:hover {
   cursor: pointer;
