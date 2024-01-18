@@ -1,6 +1,6 @@
 // BlogList.jsx
 import React from 'react';
-import { Button, ListGroup, Card } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import BlogItem from './BlogItem';
 
 // BlogList component to display a list of blog posts
