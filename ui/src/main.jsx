@@ -8,7 +8,7 @@ import CharacterCreatorForm from "./components/CharacterCreatorForm";
 import LoginForm from "./components/LoginForm";
 import DisplayCharacters from "./components/DisplayCharacters";
 import LandingPage from "./components/LandingPage";
-import Navbar from "./components/Navbar";
+import NavbarHead from "./components/Navbar";
 import Logout from "./components/Logout";
 import RegisterForm from "./components/RegisterForm";
 import { AuthUserProvider } from "./AuthUser";
@@ -24,6 +24,9 @@ const router = createBrowserRouter([
       { path: "register", element: <RegisterForm /> },
       { path: "logout", element: <Logout />},
       { path: "user-characters", element: <DisplayCharacters /> },
+      { path: "spellbook", element: <Spellbook /> },
+      { path: "dice-roller", element: <DieRoller /> },
+      { path: "blog", element :<Blog /> },
     ],
     errorElement: <ErrorPage />,
   },

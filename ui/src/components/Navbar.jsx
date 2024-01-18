@@ -1,28 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
-const Navbar = () => {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/logout">Logout</Link>
-        </li>
-        <li>
-          <Link to="/character-creator">Character Creator</Link>
-        </li>
-        <li>
-          <Link to="/user-characters">User Characters</Link>
-        </li>
-      </ul>
-    </nav>
+function NavbarHead() {
+return(
+<Navbar className="bg-body-tertiary">
+        <Container background-color="cadetblue">
+          <Navbar.Brand>
+            <img
+              alt=""
+              src="/NavIcon.png"
+              width="300"
+              height="168"
+              className="d-inline-block align-top"
+            />{' '}
+            <strong>404-Found: D&D Character Creator</strong>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Nav className="me-auto">
+                      <Nav.Link href="/">Home</Nav.Link>
+                      <Nav.Link href="login">Login</Nav.Link>
+                      <Nav.Link href="user-characters">Your Characters</Nav.Link>
+                      <Nav.Link href="/character-creator">Character Creator</Nav.Link>
+                      <Nav.Link href="/dice-roller">Dice Roller</Nav.Link>
+                      <Nav.Link href="/spellbook">Spellbook</Nav.Link>
+                      <Nav.Link href="/blog">Blog</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
   );
-};
+}
 
-export default Navbar;
+export default NavbarHead;
+
