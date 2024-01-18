@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 function NavbarHead() {
 return(
 <Navbar className="bg-body-tertiary">
-        <Container background-color="cadetblue">
+          <Container fluid style={{ maxWidth: '1380px', backgroundColor: '' }}>
           <Navbar.Brand>
             <img
               alt=""
@@ -25,6 +25,7 @@ return(
                       <Nav.Link href="/dice-roller">Dice Roller</Nav.Link>
                       <Nav.Link href="/spellbook">Spellbook</Nav.Link>
                       <Nav.Link href="/blog">Blog</Nav.Link>
+                      <Nav.Link href="/contact-us">Contact Us</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
