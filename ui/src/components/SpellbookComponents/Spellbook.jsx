@@ -1,6 +1,6 @@
 // src/components/SpellBookComponents/Spellbook.jsx
 import React, { useEffect, useState } from "react";
-import { getAllSpells } from "./SpellApiFunctions";
+import { getAllSpells } from "./api";
 import SpellCard from "./SpellCard";
 
 
@@ -31,8 +31,6 @@ setFilteredSpells(filtered);
 }, [searchQuery, spells]);
 
 return (
-<body class="spells">
-<container>
 <div className="Spellbook container mt-3">
     <div className="mb-3">
     <input
@@ -56,9 +54,8 @@ return (
     ))}
     </div>
 </div>
-</container>
-</body>
 );
 };
 
 export default Spellbook;
+

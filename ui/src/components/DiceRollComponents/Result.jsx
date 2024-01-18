@@ -22,4 +22,4 @@ return (
 );
 };
 
-export default Result
+export default Result;
