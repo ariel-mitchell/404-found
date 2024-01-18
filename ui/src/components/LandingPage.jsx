@@ -2,11 +2,19 @@ import React from "react";
 
 const LandingPage = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+      }}
+    >
       <h1>D&D Character Creator</h1>
       <nav></nav>
 
-      <main role="main" className="inner cover">
+      <main role="main" style={{ textAlign: "center" }}>
         <p>Create the start of your journey with EasyDnD</p>
         <p>
           <a href="/register">Sign Up</a>
@@ -21,7 +29,11 @@ const LandingPage = () => {
           <p>Created by 404-Found</p>
         </div>
       </footer>
-      <img src="./dragonlance.avif" class="center" />
+      <img
+        src="./dragonlance.avif"
+        style={{ display: "block", margin: "0 auto" }}
+        alt="Dragon"
+      />
     </div>
   );
 };
