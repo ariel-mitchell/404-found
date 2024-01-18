@@ -8,7 +8,8 @@ const Logout = () => {
     axios
       .get("http://localhost:8080/api/logout", { withCredentials: true })
       .then(() => {
-        redirect("/"); // redirect to LOGIN page
+        redirect("/");
+        window.alert("You've been logged out, see you next time!"); // redirect to LOGIN page
       })
       .catch((error) => {
         console.error("Error during logout", error);

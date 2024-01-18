@@ -31,6 +31,7 @@ const RegisterForm = () => {
       console.log(response.data);
       if (response.data) {
         login(response.data);
+        window.alert("User Created! Now, Make a character");
         redirect("/character-creator");
       }
     } catch (error) {
