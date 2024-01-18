@@ -1,11 +1,11 @@
-// App.js
+
 import React, { useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import BlogList from "./BlogList";
 import BlogForm from "./BlogForm";
 import BlogItem from "./BlogItem";
 
-const App = () => {
+const BlogApp = () => {
 // State for managing selected post, new post data, posts array, error message, admin status, and edit mode
 const [selectedPost, setSelectedPost] = useState(null);
 const [newPostTitle, setNewPostTitle] = useState("");
@@ -147,4 +147,4 @@ return (
 );
 };
 
-export default App;
+export default BlogApp;

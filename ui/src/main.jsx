@@ -8,7 +8,6 @@ import CharacterCreatorForm from "./components/CharacterCreatorForm";
 import LoginForm from "./components/LoginForm";
 import DisplayCharacters from "./components/DisplayCharacters";
 import LandingPage from "./components/LandingPage";
-import NavbarHead from "./components/Navbar";
 import Logout from "./components/Logout";
 import RegisterForm from "./components/RegisterForm";
 import { AuthUserProvider } from "./AuthUser";
@@ -17,6 +16,7 @@ import Blog from "./components/BlogComponents/Blog";
 import Spellbook from "./components/SpellbookComponents/Spellbook";
 import Contact from "./components/Contact";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import App from "./components/BlogComponents/BlogApp";
 
 const router = createBrowserRouter([
   {
