@@ -1,0 +1,25 @@
+/* Container styles */
+#spellbook-container {
+margin: 20px;
+}
+
+/* Individual spell styles */
+.spell {
+border: 1px solid #ddd;
+padding: 10px;
+margin-bottom: 10px;
+}
+
+/* Spell name styles */
+.spell h4 {
+margin: 0;
+font-size: 18px;
+color: #333;
+}
+
+/* Additional details styles */
+.spell p {
+margin: 5px 0;
+font-size: 14px;
+color: #666;
+}
