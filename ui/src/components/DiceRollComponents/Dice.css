@@ -1,40 +1,54 @@
-/* dice css */
-
-/* Center the content */
+/* Styling for the container */
 .App {
-    text-align: center;
-    }
-    
-    /* Styling for the header */
-    .App-header {
-    background-color: #282c34;
-    padding: 20px;
-    color: white;
-    }
-    
-    /* Styling for the select input */
-    select {
-    padding: 8px;
-    margin: 10px;
-    }
-    
-    /* Styling for the roll button */
-    button {
-    padding: 10px 20px;
-    background-color: #61dafb;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    }
-    
-    /* Hover effect for the roll button */
-    button:hover {
-    background-color: #4fa3d1;
-    }
-    
-    /* Styling for the outcome paragraph */
-    p {
-    font-size: 24px;
-    margin: 20px 0;
-    }
-    
+  text-align: center;
+}
+
+/* Styling for the header */
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  margin-bottom: 5px; /* Add margin bottom to reduce space between header and DieChooser */
+}
+
+/* Styling for the select input */
+select {
+  padding: 8px;
+  margin: 10px;
+}
+
+/* Styling for the number of dice input */
+label {
+  margin-bottom: 5px; /* Add margin bottom to reduce space between label and input */
+}
+
+/* Styling for the input */
+input {
+  padding: 8px;
+  margin: 5px 0; /* Add margin top and bottom to reduce space between input and button */
+}
+
+/* Styling for the roll button */
+button {
+  padding: 10px 20px;
+  background-color: #61dafb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 5px; /* Add margin top to reduce space between button and Result */
+}
+
+/* Hover effect for the roll button */
+button:hover {
+  background-color: #4fa3d1;
+}
+
+/* Styling for the outcome paragraph */
+p {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+div {
+  margin-bottom: 5px; /* Adjust the margin value */
+}
