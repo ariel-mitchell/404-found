@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../AuthUser";
+import "../app.css";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -56,7 +57,7 @@ const LoginForm = () => {
       </label>
       <button type="submit">Login</button>
     </form>
-    <img src="./dragonwizard.jpg" class="center"  />
+    <img src="./dragonwizard.jpg" class="center" />
     </div>
   );
 };

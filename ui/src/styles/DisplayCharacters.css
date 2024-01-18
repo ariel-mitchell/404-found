@@ -33,3 +33,12 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+img.center {
+  display: block;
+  width: 100%;
+}
+
+form {
+  background-color: black;
+}

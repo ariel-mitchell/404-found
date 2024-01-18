@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllSpells } from "./SpellApiFunctions";
 import SpellCard from "./SpellCard";
-import './spellbook.css';
 
 
 const Spellbook = () => {
