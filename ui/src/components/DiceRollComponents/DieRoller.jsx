@@ -35,10 +35,7 @@ const DieRoller = () => {
       </button>
       <Result outcomes={outcomes} style={{ fontSize: '24px', margin: '10px 0' }} />
     </div>
-    <button class="dice" onClick={handleClick}>Roll</button>
-    <Result outcomes={outcomes} />
-</div>
-);
+  );
 };
 
 export default DieRoller;
