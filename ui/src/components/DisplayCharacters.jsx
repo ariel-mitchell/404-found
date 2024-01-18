@@ -72,6 +72,7 @@ export default function DisplayCharacters({}) {
   return (
     <div className="title">
       <h1>User's Characters</h1>
+      <img src="./ui/public/dnd-5e-spells-wizard.webp" class="center" />
       <div className="character-grid">
         {characters.map((character, index) => (
           <div key={index} className="character">

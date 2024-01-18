@@ -21,6 +21,7 @@ const LandingPage = () => {
           <p>Created by 404-Found</p>
         </div>
       </footer>
+      <img src="./dragonlance.avif" class="center" />
     </div>
   );
 };

@@ -34,6 +34,7 @@ const LoginForm = () => {
   };
 
   return (
+    <div>
     <form onSubmit={handleSubmit}>
       <label>
         Username:
@@ -55,6 +56,8 @@ const LoginForm = () => {
       </label>
       <button type="submit">Login</button>
     </form>
+    <img src="./dragonwizard.jpg" class="center"  />
+    </div>
   );
 };
 
