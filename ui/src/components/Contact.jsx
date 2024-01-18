@@ -25,21 +25,21 @@ function ContactForm() {
   };
 
   const labelStyle = {
-    color: 'black',
+    color: 'yellow',
   };
 
   return (
     <form ref={formRef} id="contact-form" onSubmit={handleSubmit} method="POST" style={formStyle}>
       <div className="mb-3">
-        <label htmlFor="name" className="form-label" style={labelStyle}>Name</label>
+        <label htmlFor="name" className="form-label" style={labelStyle}>Name:</label>
         <input type="text" className="form-control" id="name" />
       </div>
       <div className="mb-3">
-        <label htmlFor="email" className="form-label" style={labelStyle}>Email address</label>
+        <label htmlFor="email" className="form-label" style={labelStyle}>Email address:</label>
         <input type="email" className="form-control" id="email" aria-describedby="emailHelp" />
       </div>
       <div className="mb-3">
-        <label htmlFor="message" className="form-label" style={labelStyle}>Message</label>
+        <label htmlFor="message" className="form-label" style={labelStyle}>Message:</label>
         <textarea className="form-control" id="message" rows="5"></textarea>
       </div>
       <button type="submit" className="btn btn-primary" onClick={handleButtonClick}>Submit</button>

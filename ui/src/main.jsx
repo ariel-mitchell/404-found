@@ -16,6 +16,7 @@ import Spellbook from "./components/SpellbookComponents/Spellbook";
 import Contact from "./components/Contact";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BlogApp from "./components/BlogComponents/BlogApp";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
   {

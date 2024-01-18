@@ -29,7 +29,7 @@ return (
     <label>Number of Dice: </label>
     <input type="number" min="1" value={numDice} onChange={(e) => setNumDice(parseInt(e.target.value, 10))} />
     </div>
-    <button onClick={handleClick}>Roll</button>
+    <button class="dice" onClick={handleClick}>Roll</button>
     <Result outcomes={outcomes} />
 </div>
 );
