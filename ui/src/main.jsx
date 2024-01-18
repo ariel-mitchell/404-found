@@ -12,11 +12,10 @@ import Logout from "./components/Logout";
 import RegisterForm from "./components/RegisterForm";
 import { AuthUserProvider } from "./AuthUser";
 import DieRoller from "./components/DiceRollComponents/DieRoller";
-import Blog from "./components/BlogComponents/Blog";
 import Spellbook from "./components/SpellbookComponents/Spellbook";
 import Contact from "./components/Contact";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import App from "./components/BlogComponents/BlogApp";
+import BlogApp from "./components/BlogComponents/BlogApp";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +30,7 @@ const router = createBrowserRouter([
       { path: "user-characters", element: <DisplayCharacters /> },
       { path: "spellbook", element: <Spellbook /> },
       { path: "dice-roller", element: <DieRoller /> },
-      { path: "blog", element :<Blog /> },
+      { path: "blog", element :<BlogApp /> },
       { path: "contact-us", element :<Contact /> }
     ],
     errorElement: <ErrorPage />,
