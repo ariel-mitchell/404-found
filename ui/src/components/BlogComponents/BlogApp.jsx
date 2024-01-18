@@ -94,10 +94,11 @@ return (
         {/* Header */}
         <div
         style={{
+            position: "relative",
             backgroundColor: "#3498db",
             padding: "10px",
             borderRadius: "10px",
-            marginBottom: "20px",
+            marginBottom: "-973px",
         }}
         >
         <h1 style={{ fontSize: "24px", fontWeight: "bold", textAlign: "center", color: "white" }}>Blog App</h1>
