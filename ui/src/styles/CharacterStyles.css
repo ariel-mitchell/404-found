@@ -1,0 +1,93 @@
+h1 {
+  text-align: center;
+  font-family: Papyrus, Fantasy, serif;
+  font-weight: bold;
+}
+h3 {
+  text-align: center;
+  font: Papyrus, Fantasy, serif;
+  font-weight: bold;
+}
+input[type="text"] {
+  padding: 6px 8px;
+  margin: 8px 0;
+  border-bottom: 2px solid black;
+  font: Papyrus, Fantasy, serif;
+  font-weight: bold;
+}
+label {
+  font: bold;
+  font: Papyrus, Fantasy, serif;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+form {
+  text-align: center;
+  color: yellow;
+  font-family: Papyrus, Fantasy, serif;
+  font-weight: bold;
+  background: black;
+}
+container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+container.alignment {
+  display: grid;
+  align-items: left;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+container.spells {
+  display: grid;
+  align-items: left;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+form.h2 {
+  font-size: 60px;
+}
+form.h4 {
+  font-size: 50px;
+}
+div {
+  text-align: left;
+
+  container.class {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 5px;
+  }
+
+  container.race {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  h2 {
+    text-align: center;
+  }
+  ul,
+  li {
+    font-size: 30px;
+    padding: 10px;
+    padding-left: 50px;
+  }
+  label {
+    padding-left: 100px;
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .background {
+    height: 50px;
+    width: 1000px;
+    font-size: 10pt;
+  }
+}
