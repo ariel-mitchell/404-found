@@ -31,7 +31,7 @@ const LandingPage = () => {
       </footer>
       <img
         src="./dragonlance.avif"
-        style={{ display: "block", margin: "0 auto" }}
+        style={{ display: "block", margin: "0 auto",height: "400px", width: "700px" }}
         alt="Dragon"
       />
     </div>
