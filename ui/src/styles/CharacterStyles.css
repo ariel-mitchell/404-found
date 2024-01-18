@@ -16,6 +16,7 @@ input[type="text"] {
   font-weight: bold;
 }
 label {
+  background-color: black;
   font: bold;
   font: Papyrus, Fantasy, serif;
   font-weight: bold;
@@ -23,11 +24,11 @@ label {
 }
 
 form {
+  background-color: black;
   text-align: center;
   color: yellow;
   font-family: Papyrus, Fantasy, serif;
   font-weight: bold;
-  background: black;
 }
 container {
   display: grid;
@@ -54,6 +55,7 @@ div {
   text-align: left;
 
   container.class {
+    background-color: black;
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -61,6 +63,7 @@ div {
   }
 
   container.race {
+    background-color: black;
     display: grid;
     align-items: center;
     grid-template-columns: 1fr 1fr;
@@ -80,7 +83,7 @@ div {
   }
 
   .center {
-    display: block;
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
   }

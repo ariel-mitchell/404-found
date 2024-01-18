@@ -5,7 +5,7 @@ import { Button, ListGroup, Card } from 'react-bootstrap';
 // BlogItem component to represent an individual blog post
 const BlogItem = ({ item, onDelete, onSelect, onEdit, isAdmin }) => (
 <ListGroup.Item onClick={() => onSelect(item)}>
-<Card style={{ cursor: 'pointer', marginBottom: '20px', borderRadius: '10px' }}>
+<Card style={{ cursor: 'pointer', marginBottom: '10px', borderRadius: '10px' }}>
     <Card.Body>
     {/* Display blog post title */}
     <Card.Title style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textDecoration: 'underline' }}>
