@@ -168,6 +168,7 @@ export default function CreateCharacterForm() {
         character,
         { withCredentials: true }
       );
+      redirect = 
       console.log(response.data);
     } catch (error) {
       console.error("Error creating character", error);

@@ -107,7 +107,7 @@ public class ApiController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        User newUser = new User(registerFormDTO.getUsername(),passwordEncoder.encode(password), registerFormDTO.getEmail());
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getEmail(),passwordEncoder.encode(password));
         userRepository.save(newUser);
 
         setUserInSession(request.getSession(), newUser);
