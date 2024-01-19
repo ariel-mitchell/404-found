@@ -8,6 +8,7 @@ import {
   treasures,
 } from "./CharacterData.jsx";
 import "../styles/CharacterStyles.css";
+import { Navigate } from "react-router-dom";
 
 export default function CreateCharacterForm() {
   const [characterName, setCharacterName] = useState("");
@@ -71,7 +72,7 @@ export default function CreateCharacterForm() {
       }
     };
 
-    fetchData();
+    fetchData(); // call this to render all info when component "page" loads..
   }, []);
 
   useEffect(() => {
