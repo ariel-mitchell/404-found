@@ -4,10 +4,11 @@ Enjoy the creation of new, personalized characters in the tabletop roleplaying g
 Primarily intended for use by new players, but able to be used by everyone.
 
 # How to install
-  - You will have to clone the project and host it on their own computer.
-  - React LocalHost set to 5173
-  - Will need to run MySQL on your computer to create a user and/or character.
-
+  - Clone project onto local machine.
+  - React LocalHost set to 5173.
+  - Change Username/PW in application.properties to match your local MySQL setup.
+# Link to second Repo. (Restarted project & built from scratch)
+https://github.com/ariel-mitchell/404-found-2
 
 
 
